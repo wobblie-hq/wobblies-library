@@ -53,18 +53,25 @@ echo -e " ${DIM}iterations:${NC} ${CYAN}$MAX_ITERATIONS${NC}"
 echo -e "${MAGENTA}══════════════════════════════════════${NC}"
 echo ""
 
-read -r -p "$(echo -e "${YELLOW}🔄 Iterate automatically through tasks? (y/n):${NC} ")" AUTO_MODE
-case "$AUTO_MODE" in
-  [yY]|[yY][eE][sS]) AUTO_MODE=true; echo -e " ${GREEN}✔ Auto-pilot enabled${NC}" ;;
-  *) AUTO_MODE=false; echo -e " ${BLUE}✔ Manual mode — you'll confirm each iteration${NC}" ;;
-esac
+if [ "${RALPH_NONINTERACTIVE:-}" = "1" ]; then
+  AUTO_MODE=true
+  echo -e " ${GREEN}✔ Non-interactive mode (RALPH_NONINTERACTIVE=1) — auto-pilot, no prompts${NC}"
+else
+  read -r -p "$(echo -e "${YELLOW}🔄 Iterate automatically through tasks? (y/n):${NC} ")" AUTO_MODE
+  case "$AUTO_MODE" in
+    [yY]|[yY][eE][sS]) AUTO_MODE=true; echo -e " ${GREEN}✔ Auto-pilot enabled${NC}" ;;
+    *) AUTO_MODE=false; echo -e " ${BLUE}✔ Manual mode — you'll confirm each iteration${NC}" ;;
+  esac
+fi
 
 echo ""
 echo -e "${CYAN}─── 📋 Prompt ───────────────────────────${NC}"
 echo "$PROMPT"
 echo -e "${CYAN}──────────────────────────────────────────${NC}"
 echo ""
-read -r -p "$(echo -e "${YELLOW}👀 Review the prompt above. Press Enter to launch the Ralph loop...${NC} ")"
+if [ "${RALPH_NONINTERACTIVE:-}" != "1" ]; then
+  read -r -p "$(echo -e "${YELLOW}👀 Review the prompt above. Press Enter to launch the Ralph loop...${NC} ")"
+fi
 echo ""
 
 for i in $(seq 1 $MAX_ITERATIONS); do
