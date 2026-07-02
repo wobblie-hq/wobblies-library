@@ -101,7 +101,15 @@ const jobToBeDoneSchema = z.enum([
   'wobblie-operations',
 ]);
 
-const integrationSchema = z.enum(['github', 'linear', 'slack', 'sentry']);
+const integrationSchema = z.enum([
+  'github',
+  'linear',
+  'slack',
+  'sentry',
+  'jira',
+  'notion',
+  'vercel',
+]);
 
 const exampleMetadataSchema = z
   .object({
@@ -162,10 +170,12 @@ const wobblieFrontmatterSchema = z
   .object({
     id: slugSchema,
     purpose: nonEmptyStringSchema,
+    integrations: z.array(integrationSchema).min(1).optional(),
     watch: z.array(nonEmptyStringSchema).min(1).optional(),
     routines: z.array(nonEmptyStringSchema).min(1),
     deny: z.array(nonEmptyStringSchema).min(1).optional(),
     schedule: fiveFieldCronSchema.optional(),
+    config: z.record(z.unknown()).optional(),
   })
   .strict()
   .superRefine((value, context) => {

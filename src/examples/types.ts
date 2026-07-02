@@ -28,7 +28,14 @@ export type JobToBeDone =
   | 'explain'
   | 'plan'
   | 'wobblie-operations';
-export type IntegrationSlug = 'github' | 'linear' | 'slack' | 'sentry';
+export type IntegrationSlug =
+  | 'github'
+  | 'linear'
+  | 'slack'
+  | 'sentry'
+  | 'jira'
+  | 'notion'
+  | 'vercel';
 
 export type ExampleAdaptation = {
   key: string;

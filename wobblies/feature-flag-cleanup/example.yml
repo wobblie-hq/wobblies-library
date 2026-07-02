@@ -1,0 +1,51 @@
+id: feature-flag-cleanup
+title: Feature Flag Cleanup
+status: draft
+summary: Retires fully rolled-out or dead feature flags with small, evidence-backed removal PRs.
+readiness: adapt-before-use
+showOnWebsite: true
+showInDashboard: true
+fit:
+  jobsToBeDone:
+    - maintain-and-modernize
+  bestFor:
+    - Codebases where launched flags linger for months after full rollout.
+    - Teams with a consistent flag helper or config format the scanner can target.
+  notFor:
+    - Repositories using a remote flag service with no in-repo flag evidence.
+    - Flags that double as long-lived operational kill switches (use the keep-list, or skip this wobblie).
+requirements:
+  requiredIntegrations:
+    - github
+  optionalIntegrations: []
+  other:
+    - A recognizable flag pattern and in-repo flag configuration.
+    - A test suite runnable in the sandbox.
+adaptations:
+  - key: flag_pattern
+    label: Flag pattern
+    description: Regex or helper name identifying feature flag reads in code.
+    required: true
+    suggestions:
+      - isEnabled\(
+      - flags\.
+  - key: flag_config_paths
+    label: Flag config paths
+    description: Paths where flag definitions and values live.
+    required: true
+    suggestions:
+      - config/flags.ts
+  - key: keep_list
+    label: Keep-list
+    description: Comma-separated flag names the cleanup must never touch.
+    required: false
+    default: ''
+  - key: min_age_days
+    label: Minimum age (days)
+    description: Days a flag must be unmodified before it is a removal candidate.
+    required: false
+    default: '60'
+specializationIdeas:
+  - Integrate with a flag service export to confirm rollout percentages before removal.
+  - Post a monthly flag-inventory summary instead of PRs for teams that prefer review-first.
+  - Restrict scanning to specific packages in a monorepo.

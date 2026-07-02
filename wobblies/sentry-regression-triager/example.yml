@@ -1,0 +1,33 @@
+id: sentry-regression-triager
+title: Sentry Regression Triager
+status: draft
+summary: Connects new Sentry errors to the merged pull request that likely caused them.
+readiness: direct-copy
+showOnWebsite: true
+showInDashboard: true
+fit:
+  jobsToBeDone:
+    - operate
+  bestFor:
+    - Teams whose Sentry inbox fills faster than anyone can correlate errors to changes.
+    - Repositories with release tagging so error first-seen maps to a merge window.
+  notFor:
+    - Projects without Sentry or without source-mapped stack traces.
+    - Monorepos where Sentry projects are not mapped to a single repository.
+requirements:
+  requiredIntegrations:
+    - sentry
+    - github
+  optionalIntegrations: []
+  other:
+    - Sentry projects mapped to this repository with readable stack traces.
+adaptations:
+  - key: min_events
+    label: Minimum event count
+    description: Events a new Sentry issue needs before the triager acts.
+    required: false
+    default: '5'
+specializationIdeas:
+  - Post high-confidence suspects to a Slack channel as well.
+  - Restrict to production-environment Sentry issues only.
+  - Tighten the release window for teams that deploy many times a day.

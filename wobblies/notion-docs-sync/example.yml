@@ -1,0 +1,39 @@
+id: notion-docs-sync
+title: Notion Docs Sync
+status: draft
+summary: Syncs drift between Notion docs pages and repository documentation in the right direction.
+readiness: adapt-before-use
+showOnWebsite: true
+showInDashboard: true
+fit:
+  jobsToBeDone:
+    - document
+  bestFor:
+    - Teams that write product docs in Notion but publish developer docs from the repository.
+    - Docs sets where the same content demonstrably drifts between the two.
+  notFor:
+    - Teams fully committed to a single docs home.
+    - Notion pages with rich embeds that do not survive Markdown conversion.
+requirements:
+  requiredIntegrations:
+    - notion
+    - github
+  optionalIntegrations: []
+  other:
+    - A Notion database of docs pages mappable to repository paths.
+adaptations:
+  - key: notion_database
+    label: Notion docs database
+    description: The Notion database containing pages to keep in sync.
+    required: true
+    suggestions: []
+  - key: sync_path
+    label: Repo sync path
+    description: Repository directory whose documents participate in sync.
+    required: true
+    suggestions:
+      - docs/
+specializationIdeas:
+  - Add a page property that pins direction per page instead of the global policy.
+  - Batch weekly instead of per-update for high-churn Notion workspaces.
+  - Convert Notion callouts to the repository's admonition syntax.

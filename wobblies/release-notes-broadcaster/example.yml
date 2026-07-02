@@ -1,0 +1,40 @@
+id: release-notes-broadcaster
+title: Release Notes Broadcaster
+status: draft
+summary: Posts a plain-language Slack summary of what shipped whenever a release is published.
+readiness: adapt-before-use
+showOnWebsite: true
+showInDashboard: true
+fit:
+  jobsToBeDone:
+    - operate
+    - document
+  bestFor:
+    - Teams where releases happen but nobody outside the repo hears about them.
+    - Pairing with a release-drafting wobblie for an end-to-end release flow.
+  notFor:
+    - Repositories without tagged releases.
+    - Teams that already broadcast releases through a deploy pipeline.
+requirements:
+  requiredIntegrations:
+    - github
+    - slack
+  optionalIntegrations: []
+  other:
+    - A configured Slack channel for release announcements.
+adaptations:
+  - key: slack_channel
+    label: Slack channel
+    description: Slack channel where release summaries are posted.
+    required: true
+    suggestions:
+      - '#releases'
+  - key: include_prereleases
+    label: Include pre-releases
+    description: Whether pre-release versions are announced too.
+    required: false
+    default: 'false'
+specializationIdeas:
+  - Tag customer-facing changes for a separate customer-updates channel.
+  - Add deploy status once the release reaches production.
+  - Localize summaries for multi-language teams.

@@ -1,0 +1,32 @@
+id: github-issue-triager
+title: GitHub Issue Triager
+status: draft
+summary: Labels new GitHub issues, surfaces likely duplicates, and requests missing repro details.
+readiness: direct-copy
+showOnWebsite: true
+showInDashboard: true
+fit:
+  jobsToBeDone:
+    - organize
+  bestFor:
+    - Open-source maintainers and product teams triaging a steady stream of GitHub issues.
+    - Repositories with a meaningful label set and an issue template.
+  notFor:
+    - Repositories that track work outside GitHub issues.
+    - Label sets that are intentionally ad hoc or owner-specific.
+requirements:
+  requiredIntegrations:
+    - github
+  optionalIntegrations: []
+  other:
+    - Issue labels with names clear enough to support confident classification.
+adaptations:
+  - key: required_fields
+    label: Required report fields
+    description: Comma-separated fields a bug report must include before it is actionable; empty uses the issue template.
+    required: false
+    default: ''
+specializationIdeas:
+  - Route security-labeled issues to a private Slack channel.
+  - Add a good-first-issue suggestion pass for straightforward, well-scoped reports.
+  - Tighten duplicate search to specific components in a monorepo.

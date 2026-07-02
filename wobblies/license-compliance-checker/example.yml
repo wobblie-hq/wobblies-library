@@ -1,0 +1,38 @@
+id: license-compliance-checker
+title: License Compliance Checker
+status: draft
+summary: Flags newly added dependencies whose licenses violate the team's policy, at review time.
+readiness: adapt-before-use
+showOnWebsite: true
+showInDashboard: true
+fit:
+  jobsToBeDone:
+    - review-with-confidence
+  bestFor:
+    - Companies shipping proprietary software that must avoid copyleft contamination.
+    - Teams without a commercial license-scanning product.
+  notFor:
+    - Open-source projects where copyleft licenses are acceptable.
+    - Organizations already running FOSSA, Snyk, or similar license gates in CI.
+requirements:
+  requiredIntegrations:
+    - github
+  optionalIntegrations: []
+  other:
+    - Lockfiles committed to the repository.
+adaptations:
+  - key: disallowed_licenses
+    label: Disallowed licenses
+    description: Comma-separated SPDX license ids that constitute a violation.
+    required: true
+    suggestions:
+      - GPL-3.0-only, AGPL-3.0-only, SSPL-1.0
+  - key: review_licenses
+    label: Review-required licenses
+    description: SPDX ids flagged for review rather than as violations.
+    required: false
+    default: LGPL-3.0-only, MPL-2.0
+specializationIdeas:
+  - Maintain an approved-exceptions list for specific packages.
+  - Escalate violations on release branches to a Slack channel.
+  - Extend to Docker base-image licenses for teams shipping images.

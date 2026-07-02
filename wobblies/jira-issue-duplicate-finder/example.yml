@@ -1,0 +1,26 @@
+id: jira-issue-duplicate-finder
+title: Jira Issue Duplicate Finder
+status: draft
+summary: Suggests likely duplicate or related Jira issues when new issues are created.
+readiness: direct-copy
+showOnWebsite: true
+showInDashboard: true
+fit:
+  jobsToBeDone:
+    - organize
+  bestFor:
+    - High-volume Jira projects where duplicates burn triage time.
+    - Teams that want suggestions with evidence, not automatic closing.
+  notFor:
+    - Small projects where duplicates are rare and obvious.
+    - Workflows that auto-close duplicates via Jira automation already.
+requirements:
+  requiredIntegrations:
+    - jira
+    - github
+  optionalIntegrations: []
+  other: []
+specializationIdeas:
+  - Weight matches from the same component or reporter team higher.
+  - Include recently resolved issues to catch reopened regressions.
+  - Restrict search to the triggering issue's project for very large instances.

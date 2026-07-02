@@ -1,0 +1,27 @@
+id: jira-issue-labeler
+title: Jira Issue Label Hygiene Helper
+status: draft
+summary: Keeps recently changed Jira issues aligned with the project's live label and component conventions.
+readiness: direct-copy
+showOnWebsite: true
+showInDashboard: true
+fit:
+  jobsToBeDone:
+    - organize
+    - operate
+  bestFor:
+    - Teams using Jira labels and components for routing, reporting, or automation.
+    - Projects where labels drift, conflict, or are often missing.
+  notFor:
+    - Projects whose labels are intentionally ad hoc or owner-specific.
+    - Workspaces with strict Jira automation rules that already govern labels.
+requirements:
+  requiredIntegrations:
+    - jira
+  optionalIntegrations: []
+  other:
+    - Enough existing label and component usage to support high-confidence decisions.
+specializationIdeas:
+  - Restrict labeling to specific Jira projects or issue types.
+  - Add explicit label-family rules if the project has strict type, area, or source families.
+  - Allow safe label removals only after the team documents exact conflict rules.

@@ -1,0 +1,46 @@
+id: stale-issue-closer
+title: Stale Issue Closer
+status: draft
+summary: Warns on, then closes, issues with months of inactivity — with clear escape hatches.
+readiness: direct-copy
+showOnWebsite: true
+showInDashboard: true
+fit:
+  jobsToBeDone:
+    - organize
+  bestFor:
+    - Repositories whose open-issue count no longer reflects real work.
+    - Maintainers who want a polite two-phase nudge rather than silent closes.
+  notFor:
+    - Trackers where old issues are intentionally kept as a long-term backlog.
+    - Repositories already running a stale-bot action with tuned rules.
+requirements:
+  requiredIntegrations:
+    - github
+  optionalIntegrations: []
+  other: []
+adaptations:
+  - key: stale_days
+    label: Stale threshold (days)
+    description: Days without activity before an issue is marked stale.
+    required: false
+    default: '90'
+  - key: close_days
+    label: Close window (days)
+    description: Days after the stale warning before the issue is closed.
+    required: false
+    default: '14'
+  - key: stale_label
+    label: Stale label
+    description: Label applied when an issue is marked stale.
+    required: false
+    default: stale
+  - key: keep_label
+    label: Keep label
+    description: Label that permanently exempts an issue from staleness.
+    required: false
+    default: keep-open
+specializationIdeas:
+  - Exempt issues with specific labels such as roadmap or security.
+  - Post a weekly summary of closed stale issues to Slack.
+  - Use gentler thresholds for community-reported bugs than internal chores.
