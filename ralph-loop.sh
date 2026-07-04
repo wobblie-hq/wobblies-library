@@ -75,8 +75,14 @@ fi
 echo ""
 
 for i in $(seq 1 $MAX_ITERATIONS); do
+  DONE_COUNT=$(grep -c '^- \[[Xx]\]' "$SPECS_DIR/tasks.md" 2>/dev/null || echo 0)
+  TOTAL_COUNT=$(grep -c '^- \[' "$SPECS_DIR/tasks.md" 2>/dev/null || echo 0)
+  NEXT_TASK=$(grep -m1 '^- \[ \]' "$SPECS_DIR/tasks.md" | sed 's/^- \[ \] //')
   echo -e "${BLUE}═══════════════════════════════════════${NC}"
-  echo -e " 🔁 ${BOLD}Iteration ${CYAN}$i${NC}${BOLD} / ${DIM}$MAX_ITERATIONS${NC}"
+  echo -e " 🔁 ${BOLD}Session ${CYAN}$i${NC}${BOLD} / ${DIM}$MAX_ITERATIONS${NC}  ${DIM}(spec progress: ${DONE_COUNT}/${TOTAL_COUNT} tasks done)${NC}"
+  if [ -n "$NEXT_TASK" ]; then
+    echo -e " 🎯 ${BOLD}Next task:${NC} ${CYAN}${NEXT_TASK}${NC}"
+  fi
   echo -e "${BLUE}═══════════════════════════════════════${NC}"
 
   if [ "${ENGINE:-claude}" = "kiro" ]; then
