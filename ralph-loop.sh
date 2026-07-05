@@ -90,8 +90,12 @@ for i in $(seq 1 $MAX_ITERATIONS); do
       | kiro-cli chat --trust-all-tools --no-interactive 2>&1 \
       | tee /dev/stderr) || true
   else
+    CLAUDE_ARGS=(-p --dangerously-skip-permissions)
+    if [ -n "${RALPH_MODEL:-}" ]; then
+      CLAUDE_ARGS+=(--model "$RALPH_MODEL")
+    fi
     OUTPUT=$(echo "$PROMPT" \
-      | claude -p --dangerously-skip-permissions 2>&1 \
+      | claude "${CLAUDE_ARGS[@]}" 2>&1 \
       | tee /dev/stderr) || true
   fi
 
