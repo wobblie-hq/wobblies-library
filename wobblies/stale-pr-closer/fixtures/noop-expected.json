@@ -1,0 +1,6 @@
+{
+  "actions": [],
+  "maxActions": 0,
+  "allowNoop": true,
+  "noopReason": "No pull requests exceed the staleness threshold"
+}

@@ -1,7 +1,7 @@
 id: stale-pr-closer
 title: "Stale PR Closer"
 status: ready
-summary: "Closes pull requests with no activity for a configurable period after warning the author."
+summary: "Warns authors of inactive pull requests with a stale label and comment, then closes them after continued silence."
 readiness: direct-copy
 showOnWebsite: true
 showInDashboard: true
@@ -9,11 +9,32 @@ fit:
   jobsToBeDone:
     - maintain-and-modernize
   bestFor:
-    - Teams that want automated enforcement of this pattern.
+    - Repositories that accumulate open pull requests and want automated hygiene without manual review reminders.
+    - Teams with a policy of closing stale work and expecting authors to re-open when ready.
   notFor:
-    - Teams that prefer manual review only.
+    - Teams where all open pull requests are actively maintained and stale detection would be noise.
+    - Repositories with very slow review cycles where 14-day inactivity is expected and normal.
 requirements:
   requiredIntegrations:
     - github
   optionalIntegrations: []
   other: []
+adaptations:
+  - key: stale_days
+    label: Days before stale warning
+    description: Number of calendar days of inactivity before a pull request receives the stale label and warning comment.
+    required: false
+    default: "14"
+  - key: close_days
+    label: Days before close after stale warning
+    description: Number of additional days of inactivity after the stale label before the pull request is closed.
+    required: false
+    default: "7"
+  - key: exempt_labels
+    label: Exempt labels
+    description: Comma-separated list of labels that exempt a pull request from stale detection (e.g. keep-open).
+    required: false
+    default: "keep-open"
+specializationIdeas:
+  - Extend stale_days to 30 for repositories with slower review cycles.
+  - Add a Slack notification to a team channel when a PR is closed due to staleness.

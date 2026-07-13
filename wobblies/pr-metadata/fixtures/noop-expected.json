@@ -1,0 +1,6 @@
+{
+  "actions": [],
+  "maxActions": 0,
+  "allowNoop": true,
+  "noopReason": "PR metadata is already correct; no edits needed"
+}

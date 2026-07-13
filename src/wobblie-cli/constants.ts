@@ -5,10 +5,10 @@ export const EXIT_CODE_USAGE = 64;
 export const EXIT_CODE_DATA = 65;
 export const EXIT_CODE_INTERNAL = 70;
 
-export const SOURCE_REPO = 'wobblie-hq/wobblies-library';
-export const SOURCE_REPO_OWNER = 'wobblie-hq';
+export const SOURCE_REPO = 'wobblies-hq/wobblies-library';
+export const SOURCE_REPO_OWNER = 'wobblies-hq';
 export const SOURCE_REPO_NAME = 'wobblies-library';
-export const DEFAULT_CATALOG_REF = 'master';
+export const DEFAULT_CATALOG_REF = 'main';
 export const CATALOG_PATH = 'examples.json';
 export const SUPPORTED_CATALOG_SCHEMA_VERSION = 2;
 export const CATALOG_SOURCE_BASE_DIRECTORY = 'wobblies';

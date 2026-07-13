@@ -1,0 +1,20 @@
+{
+  "type": "pull_request",
+  "action": "opened",
+  "source": "github",
+  "payload": {
+    "repository": "acme-corp/demo-repo",
+    "number": 64,
+    "title": "feat: complete rewrite of auth system",
+    "head_branch": "feat/auth-rewrite",
+    "base_branch": "main",
+    "draft": false,
+    "additions": 1200,
+    "deletions": 800,
+    "changed_files": 45
+  },
+  "metadata": {
+    "deliveryId": "test-prsize-001",
+    "timestamp": "2026-01-15T10:00:00Z"
+  }
+}

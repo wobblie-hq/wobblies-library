@@ -4,7 +4,7 @@ purpose: Resolve merge conflicts on non-draft pull requests found after reposito
 integrations:
   - github
 watch:
-  - A GitHub push updates the repository default branch.
+  - when a push is received
 routines:
   - Run `bun .agents/wobblies/pr-merge-conflict-repair/scripts/find-conflicted-pulls.ts` to find open non-draft PRs with mergeability state `CONFLICTING`.
   - Re-fetch the current remote PR head and the PR's current base branch before editing each conflicted PR.

@@ -5,7 +5,7 @@ integrations:
   - github
   - linear
 watch:
-  - A Linear issue is created for a bug or likely regression.
+  - when a Linear issue is created
 routines:
   - Decide whether the new Linear issue is a likely bug or regression from labels and issue text.
   - Research recent Linear and GitHub context related to the likely bug, prioritizing the mapped repository.

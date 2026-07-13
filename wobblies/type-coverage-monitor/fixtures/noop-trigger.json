@@ -1,0 +1,19 @@
+{
+  "type": "schedule",
+  "source": "schedule",
+  "payload": {
+    "repository": "acme-corp/demo-repo",
+    "schedule": "0 8 * * 1",
+    "type_coverage": {
+      "total_files": 120,
+      "typed_files": 120,
+      "percent": 100,
+      "any_count": 0,
+      "worst_files": []
+    }
+  },
+  "metadata": {
+    "deliveryId": "test-type-002",
+    "timestamp": "2026-01-13T08:00:00Z"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "actions": [
+    {
+      "type": "comment",
+      "targetPattern": "^acme-corp/demo-repo#\\d+$",
+      "contentMustMatch": ["changelog", "missing"]
+    }
+  ],
+  "maxActions": 1,
+  "allowNoop": false
+}

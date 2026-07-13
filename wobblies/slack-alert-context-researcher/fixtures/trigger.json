@@ -1,0 +1,17 @@
+{
+  "type": "message",
+  "action": "posted",
+  "source": "slack",
+  "payload": {
+    "channel": "C0123ALERTS",
+    "thread_ts": "1705312800.000100",
+    "author_type": "bot",
+    "author_name": "Sentry",
+    "text": "ALERT: High error rate detected in auth-service. 500 errors spiked to 15% in the last 5 minutes. Environment: production.",
+    "repository": "acme-corp/demo-repo"
+  },
+  "metadata": {
+    "deliveryId": "test-slack-001",
+    "timestamp": "2026-01-15T12:00:00Z"
+  }
+}

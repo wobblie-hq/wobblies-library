@@ -1,0 +1,20 @@
+{
+  "type": "pull_request",
+  "action": "opened",
+  "source": "github",
+  "payload": {
+    "repository": "acme-corp/demo-repo",
+    "number": 43,
+    "title": "fix: resolve login redirect loop ENG-456",
+    "head_branch": "fix/ENG-456-login-redirect",
+    "base_branch": "main",
+    "body": "## Primary changes\nFixes the redirect loop.\n\n## Reviewer walkthrough\nCheck auth flow.\n\n## Correctness and invariants\nNo breaking changes.\n\n## Testing and QA\nUnit tests added.\n\nResolves ENG-456",
+    "draft": false,
+    "state": "open",
+    "linked_issues": ["ENG-456"]
+  },
+  "metadata": {
+    "deliveryId": "test-pr-002",
+    "timestamp": "2026-01-15T10:05:00Z"
+  }
+}

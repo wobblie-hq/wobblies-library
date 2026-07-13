@@ -1,0 +1,21 @@
+{
+  "type": "pull_request",
+  "action": "opened",
+  "source": "github",
+  "payload": {
+    "repository": "acme-corp/demo-repo",
+    "number": 54,
+    "title": "updates stuff",
+    "head_branch": "misc-updates",
+    "base_branch": "main",
+    "draft": false,
+    "commits": [
+      {"message": "updates stuff", "sha": "abc1234"},
+      {"message": "more changes", "sha": "def5678"}
+    ]
+  },
+  "metadata": {
+    "deliveryId": "test-commit-001",
+    "timestamp": "2026-01-15T10:00:00Z"
+  }
+}

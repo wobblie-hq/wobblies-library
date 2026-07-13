@@ -1,0 +1,11 @@
+{
+  "actions": [
+    {
+      "type": "slack.message",
+      "contentMustMatch": ["merged", "review"],
+      "contentMustNotMatch": ["```"]
+    }
+  ],
+  "maxActions": 1,
+  "allowNoop": false
+}

@@ -1,0 +1,6 @@
+{
+  "actions": [],
+  "maxActions": 0,
+  "allowNoop": true,
+  "noopReason": "No UI files changed in the pull request"
+}

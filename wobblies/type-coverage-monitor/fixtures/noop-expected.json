@@ -1,0 +1,6 @@
+{
+  "actions": [],
+  "maxActions": 0,
+  "allowNoop": true,
+  "noopReason": "Type coverage meets the configured threshold; no issues to report"
+}

@@ -1,0 +1,13 @@
+{
+  "type": "schedule",
+  "source": "schedule",
+  "payload": {
+    "repository": "acme-corp/demo-repo",
+    "schedule": "0 9 * * 1",
+    "unused_packages": []
+  },
+  "metadata": {
+    "deliveryId": "test-unused-002",
+    "timestamp": "2026-01-13T09:00:00Z"
+  }
+}

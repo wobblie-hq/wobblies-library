@@ -1,19 +1,34 @@
 id: branch-naming-enforcer
 title: "Branch Naming Enforcer"
 status: ready
-summary: "Validates branch names follow team conventions and comments with guidance when they don't."
-readiness: direct-copy
+summary: "Comments on pull requests whose branch names violate the configured naming pattern, helping teams enforce consistent branch conventions."
+readiness: adapt-before-use
 showOnWebsite: true
 showInDashboard: true
 fit:
   jobsToBeDone:
     - maintain-and-modernize
   bestFor:
-    - Teams that want automated enforcement of this pattern.
+    - Teams that enforce a branch naming convention such as feat/fix/chore prefixes.
+    - Repositories where consistent branch names improve CI filtering, release notes, or changelog generation.
   notFor:
-    - Teams that prefer manual review only.
+    - Teams without a branch naming convention or with free-form branch names.
+    - Repositories where branch names are managed by external tooling.
 requirements:
   requiredIntegrations:
     - github
   optionalIntegrations: []
   other: []
+adaptations:
+  - key: branch_pattern
+    label: Branch naming pattern
+    description: Regex pattern that valid branch names must match. The full branch name (without refs/heads/) is tested against this pattern.
+    required: true
+  - key: exempt_patterns
+    label: Exempt branch patterns
+    description: Regex pattern for branch names that are always considered valid (e.g. main, develop, release branches).
+    required: false
+    default: "^(main|master|develop|release/.+|hotfix/.+)$"
+specializationIdeas:
+  - Customize the pattern to match your team's branch format (e.g. include ticket numbers like JIRA-123).
+  - Add additional exempt patterns for long-lived integration branches.

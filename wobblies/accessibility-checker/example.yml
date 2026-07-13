@@ -1,7 +1,7 @@
 id: accessibility-checker
 title: "Accessibility Checker"
 status: ready
-summary: "Scans frontend code changes for accessibility violations like missing alt text and ARIA attributes."
+summary: "Reviews pull request diffs for concrete accessibility violations in changed UI files, commenting with WCAG-cited findings so teams catch a11y regressions before merge."
 readiness: direct-copy
 showOnWebsite: true
 showInDashboard: true
@@ -9,11 +9,22 @@ fit:
   jobsToBeDone:
     - maintain-and-modernize
   bestFor:
-    - Teams that want automated enforcement of this pattern.
+    - Teams building web UIs that must meet WCAG 2.1 Level A or AA compliance.
+    - Repositories with frontend components where accessibility regressions slip through review.
   notFor:
-    - Teams that prefer manual review only.
+    - Backend-only repositories with no UI files.
+    - Teams that rely exclusively on dedicated a11y testing tools in CI.
 requirements:
   requiredIntegrations:
     - github
   optionalIntegrations: []
   other: []
+adaptations:
+  - key: ui_globs
+    label: UI file globs
+    description: Glob pattern for UI files to check. Default covers common frontend extensions.
+    required: false
+    default: "**/*.{tsx,jsx,html,vue,svelte}"
+specializationIdeas:
+  - Narrow ui_globs to your component directory for faster, focused checks.
+  - Extend to include .astro or .erb files if your stack uses them.

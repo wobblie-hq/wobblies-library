@@ -1,0 +1,11 @@
+{
+  "actions": [
+    {
+      "type": "slack.message",
+      "contentMustMatch": ["Alert context", "affected"],
+      "contentMustNotMatch": ["acknowledge", "resolve"]
+    }
+  ],
+  "maxActions": 1,
+  "allowNoop": false
+}

@@ -1,0 +1,22 @@
+{
+  "type": "push",
+  "source": "github",
+  "payload": {
+    "repository": "acme-corp/demo-repo",
+    "ref": "refs/heads/main",
+    "head_sha": "abc1234",
+    "pusher": "alice",
+    "conflicted_prs": [
+      {
+        "number": 45,
+        "title": "feat: add search functionality",
+        "head_branch": "feat/search",
+        "mergeable_state": "CONFLICTING"
+      }
+    ]
+  },
+  "metadata": {
+    "deliveryId": "test-push-001",
+    "timestamp": "2026-01-15T11:00:00Z"
+  }
+}

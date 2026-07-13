@@ -1,19 +1,39 @@
 id: commit-message-enforcer
 title: "Commit Message Enforcer"
 status: ready
-summary: "Validates commit messages follow Conventional Commits and comments with corrections."
-readiness: direct-copy
+summary: "Comments on pull requests whose commit messages violate the configured commit convention, helping teams enforce consistent commit message formatting."
+readiness: adapt-before-use
 showOnWebsite: true
 showInDashboard: true
 fit:
   jobsToBeDone:
     - maintain-and-modernize
   bestFor:
-    - Teams that want automated enforcement of this pattern.
+    - Teams that enforce Conventional Commits or a ticket-prefix convention.
+    - Repositories where consistent commit messages drive changelog generation or release automation.
   notFor:
-    - Teams that prefer manual review only.
+    - Teams without a commit message convention or with free-form messages.
+    - Repositories that squash-merge and do not care about individual commit messages.
 requirements:
   requiredIntegrations:
     - github
   optionalIntegrations: []
   other: []
+adaptations:
+  - key: commit_convention
+    label: Commit convention
+    description: The commit message convention to enforce. Supported values are `conventional-commits` (default) and `ticket-prefix`.
+    required: true
+  - key: merge_style
+    label: Merge style
+    description: Set to `squash` if the repository uses squash merging, so only the PR title is checked instead of individual commits.
+    required: false
+    default: "merge"
+  - key: ticket_pattern
+    label: Ticket pattern
+    description: Regex pattern for ticket identifiers when using the `ticket-prefix` convention (e.g. `PROJ-\\d+`).
+    required: false
+    default: "[A-Z]+-\\d+"
+specializationIdeas:
+  - Customize the convention to match your team's commit format.
+  - Set merge_style to squash if your repository squash-merges PRs.

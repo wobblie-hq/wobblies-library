@@ -1,0 +1,6 @@
+{
+  "actions": [],
+  "maxActions": 0,
+  "allowNoop": true,
+  "noopReason": "No meaningful activity since previous scheduled run"
+}

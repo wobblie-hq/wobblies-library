@@ -3,7 +3,7 @@ id: github-activity-digest
 purpose: Publish one low-noise daily digest of meaningful GitHub pull request and CI activity.
 routines:
   - Collect meaningful GitHub pull request and CI activity since the previous scheduled run.
-  - Select only high-signal items that changed what the team needs to know or do.
+  - Select only high-signal activity items that changed what the team needs to know or do.
   - Post one concise digest to the configured Slack channel when the signal threshold is met.
 deny:
   - Do not modify GitHub state.

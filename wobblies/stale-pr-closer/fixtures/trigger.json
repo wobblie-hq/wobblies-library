@@ -1,0 +1,20 @@
+{
+  "type": "schedule",
+  "source": "schedule",
+  "payload": {
+    "repository": "acme-corp/demo-repo",
+    "schedule": "0 9 * * 1",
+    "stale_prs": [
+      {
+        "number": 30,
+        "title": "wip: experimental feature",
+        "last_activity": "2025-11-01T10:00:00Z",
+        "author": "alice"
+      }
+    ]
+  },
+  "metadata": {
+    "deliveryId": "test-stale-001",
+    "timestamp": "2026-01-13T09:00:00Z"
+  }
+}

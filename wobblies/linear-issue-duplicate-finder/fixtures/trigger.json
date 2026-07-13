@@ -1,0 +1,17 @@
+{
+  "type": "issue",
+  "action": "created",
+  "source": "linear",
+  "payload": {
+    "issue_id": "ENG-1240",
+    "title": "API rate limiter returns 500 instead of 429",
+    "description": "When rate limit is exceeded, the API returns HTTP 500 with a generic error instead of 429 Too Many Requests.",
+    "labels": ["Bug"],
+    "team": "Engineering",
+    "repository": "acme-corp/demo-repo"
+  },
+  "metadata": {
+    "deliveryId": "test-linear-003",
+    "timestamp": "2026-01-15T11:00:00Z"
+  }
+}

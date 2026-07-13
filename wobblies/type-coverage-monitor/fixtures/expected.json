@@ -1,0 +1,11 @@
+{
+  "actions": [
+    {
+      "type": "create_issue",
+      "targetPattern": "^acme-corp/demo-repo$",
+      "contentMustMatch": ["type", "coverage"]
+    }
+  ],
+  "maxActions": 1,
+  "allowNoop": false
+}

@@ -1,0 +1,26 @@
+{
+  "type": "check_run",
+  "action": "completed",
+  "source": "github",
+  "payload": {
+    "repository": "acme-corp/demo-repo",
+    "pull_request": {
+      "number": 42,
+      "title": "feat: add user profile page",
+      "head_branch": "feat/user-profile",
+      "head_sha": "abc1234",
+      "draft": false,
+      "state": "open"
+    },
+    "check_run": {
+      "name": "lint",
+      "conclusion": "failure",
+      "output_title": "ESLint found 3 errors",
+      "output_summary": "src/profile.ts: unused import, missing semicolon"
+    }
+  },
+  "metadata": {
+    "deliveryId": "test-check-001",
+    "timestamp": "2026-01-15T10:30:00Z"
+  }
+}

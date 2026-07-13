@@ -1,0 +1,21 @@
+{
+  "type": "schedule",
+  "source": "schedule",
+  "payload": {
+    "repository": "acme-corp/demo-repo",
+    "schedule": "0 7 * * 1-5",
+    "audit_results": [
+      {
+        "package": "lodash",
+        "severity": "high",
+        "title": "Prototype Pollution",
+        "url": "https://github.com/advisories/GHSA-example-001",
+        "patched_version": "4.17.21"
+      }
+    ]
+  },
+  "metadata": {
+    "deliveryId": "test-security-001",
+    "timestamp": "2026-01-15T07:00:00Z"
+  }
+}

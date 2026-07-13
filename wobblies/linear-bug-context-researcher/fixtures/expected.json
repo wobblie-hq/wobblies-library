@@ -1,0 +1,11 @@
+{
+  "actions": [
+    {
+      "type": "linear.comment",
+      "contentMustMatch": ["Bug triage context"],
+      "contentMustNotMatch": ["root cause"]
+    }
+  ],
+  "maxActions": 1,
+  "allowNoop": false
+}

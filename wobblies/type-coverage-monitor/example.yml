@@ -1,7 +1,7 @@
 id: type-coverage-monitor
 title: "Type Coverage Monitor"
 status: ready
-summary: "Tracks TypeScript strict-mode coverage and flags PRs that introduce any-typed code."
+summary: "Measures TypeScript strict-mode type coverage weekly and opens a tracking issue when coverage falls below the configured minimum."
 readiness: direct-copy
 showOnWebsite: true
 showInDashboard: true
@@ -9,11 +9,33 @@ fit:
   jobsToBeDone:
     - maintain-and-modernize
   bestFor:
-    - Teams that want automated enforcement of this pattern.
+    - TypeScript repositories that want to track and improve strict-mode type coverage over time.
+    - Teams migrating to strict TypeScript who need weekly trend visibility.
   notFor:
-    - Teams that prefer manual review only.
+    - Non-TypeScript repositories.
+    - Teams already using a dedicated type coverage reporting tool with issue creation.
 requirements:
   requiredIntegrations:
     - github
   optionalIntegrations: []
-  other: []
+  other:
+    - A TypeScript project with a type coverage tool runnable via sandbox (e.g. type-coverage).
+adaptations:
+  - key: type_coverage_command
+    label: Type coverage command
+    description: Shell command to measure TypeScript type coverage and output detailed results.
+    required: false
+    default: "pnpm dlx type-coverage --strict --detail"
+  - key: min_pct
+    label: Minimum type coverage percentage
+    description: Type coverage percentage below which a tracking issue is opened.
+    required: false
+    default: "90"
+  - key: exclude_paths
+    label: Paths to exclude
+    description: JSON array of directory or file patterns to exclude from type coverage scanning.
+    required: false
+    default: '["node_modules", "dist", "build"]'
+specializationIdeas:
+  - Raise min_pct to 95 or 100 for teams aiming for full strict coverage.
+  - Add Slack notifications when coverage drops for immediate team visibility.

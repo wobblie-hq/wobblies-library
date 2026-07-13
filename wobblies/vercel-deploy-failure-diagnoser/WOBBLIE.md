@@ -5,10 +5,10 @@ integrations:
   - vercel
   - github
 watch:
-  - A Vercel deployment fails for a monitored project.
+  - when a Vercel deployment is failed
 routines:
   - Read the failed deployment's build log and identify the first genuine error, not downstream noise.
-  - Classify the failure as build error, missing environment variable, dependency problem, or platform limit.
+  - Classify the deployment failure as build error, missing environment variable, dependency problem, or platform limit.
   - Locate the pull request or commit that produced the deployment.
   - Post one comment on that pull request with the classified cause, the key log lines, and a concrete suggested fix.
 deny:

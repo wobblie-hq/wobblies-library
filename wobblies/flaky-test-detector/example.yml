@@ -1,7 +1,7 @@
 id: flaky-test-detector
 title: "Flaky Test Detector"
 status: ready
-summary: "Identifies tests that intermittently fail across recent CI runs and opens issues to fix them."
+summary: "Runs a daily CI workflow scan for intermittently failing tests and opens tracking issues per detected flaky test."
 readiness: direct-copy
 showOnWebsite: true
 showInDashboard: true
@@ -9,11 +9,23 @@ fit:
   jobsToBeDone:
     - maintain-and-modernize
   bestFor:
-    - Teams that want automated enforcement of this pattern.
+    - Teams with CI pipelines where flaky tests cause intermittent build failures.
+    - Repositories that run tests on every push and accumulate workflow run history.
   notFor:
-    - Teams that prefer manual review only.
+    - Repositories without GitHub Actions CI or equivalent workflow runs.
+    - Teams that prefer to detect and triage flaky tests entirely through manual review.
 requirements:
   requiredIntegrations:
     - github
   optionalIntegrations: []
-  other: []
+  other:
+    - GitHub Actions or equivalent CI producing workflow run history.
+adaptations:
+  - key: min_occurrences
+    label: Minimum flakiness occurrences
+    description: Number of mixed pass/fail occurrences on the same test within 7 days required to flag it as flaky.
+    required: false
+    default: "3"
+specializationIdeas:
+  - Lower the threshold to 2 for high-priority test suites or raise it to 5 for noisier environments.
+  - Add a label filter to focus only on specific workflow names or test suite identifiers.

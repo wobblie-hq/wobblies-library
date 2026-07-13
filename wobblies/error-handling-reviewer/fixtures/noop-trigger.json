@@ -1,0 +1,18 @@
+{
+  "type": "pull_request",
+  "action": "opened",
+  "source": "github",
+  "payload": {
+    "repository": "acme-corp/demo-repo",
+    "number": 61,
+    "title": "docs: update contributing guide",
+    "head_branch": "docs/contributing",
+    "base_branch": "main",
+    "draft": false,
+    "diff_files": ["CONTRIBUTING.md"]
+  },
+  "metadata": {
+    "deliveryId": "test-error-002",
+    "timestamp": "2026-01-15T10:05:00Z"
+  }
+}

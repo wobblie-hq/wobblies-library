@@ -1,0 +1,10 @@
+{
+  "actions": [
+    {
+      "type": "linear.comment",
+      "contentMustMatch": ["GitHub", "confirm"]
+    }
+  ],
+  "maxActions": 1,
+  "allowNoop": false
+}

@@ -9,9 +9,9 @@ watch:
   - when a pull request is synchronized
 routines:
   - Scan lines added in the pull request diff for credential patterns — API keys, tokens, private keys, connection strings with embedded passwords.
-  - Discard matches that are clearly placeholders, examples, test fixtures, or documented templates.
-  - Comment on the pull request naming the file and line of each probable leak, with the secret value masked.
-  - Alert the configured Slack channel when a probable leak has high confidence.
+  - Discard credential matches that are clearly placeholders, examples, test fixtures, or documented templates.
+  - Comment on the pull request naming the file and line of each probable credential leak, with the secret value masked.
+  - Alert the configured Slack channel when a probable credential leak has high confidence.
 deny:
   - Do not quote or reproduce the full secret value anywhere; always mask to the first four characters.
   - Do not modify files, revert commits, or close the pull request.

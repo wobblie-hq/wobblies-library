@@ -1,7 +1,7 @@
 # wobblies-library
 
-[![Release](https://img.shields.io/github/v/tag/wobblie-hq/wobblies-library?label=release&sort=semver)](https://github.com/wobblie-hq/wobblies-library/releases)
-[![CI](https://img.shields.io/github/actions/workflow/status/wobblie-hq/wobblies-library/release.yml?label=ci)](https://github.com/wobblie-hq/wobblies-library/actions)
+[![Release](https://img.shields.io/github/v/tag/wobblies-hq/wobblies-library?label=release&sort=semver)](https://github.com/wobblies-hq/wobblies-library/releases)
+[![CI](https://img.shields.io/github/actions/workflow/status/wobblies-hq/wobblies-library/release.yml?label=ci)](https://github.com/wobblies-hq/wobblies-library/actions)
 
 This repo contains example wobblie files for common wobblie patterns.
 
@@ -32,20 +32,20 @@ Use [WOBBLIE.md reference](https://docs.wobblies.ai/wobblies/wobblie-md-referenc
 
 | Category | Wobblie ID | Path | Description |
 | --- | --- | --- | --- |
-| Dependency maintenance | `js-ts-dependency-upgrades` | [wobblies/js-ts-dependency-upgrades/WOBBLIE.md](https://github.com/universe-backwards/wobblies-library/blob/master/wobblies/js-ts-dependency-upgrades/WOBBLIE.md) | Opens low-noise JavaScript/TypeScript dependency upgrade PRs with a configured package manager. |
-| Documentation freshness | `docs-drift-maintainer` | [wobblies/docs-drift-maintainer/WOBBLIE.md](https://github.com/universe-backwards/wobblies-library/blob/master/wobblies/docs-drift-maintainer/WOBBLIE.md) | Repairs docs drift from recent merged source changes with small source-backed PRs. |
-| Documentation freshness | `docs-stale-maintainer` | [wobblies/docs-stale-maintainer/WOBBLIE.md](https://github.com/universe-backwards/wobblies-library/blob/master/wobblies/docs-stale-maintainer/WOBBLIE.md) | Runs weekly to repair older outdated documentation in small source-backed PRs with a hard size limit. |
-| GitHub activity reporting | `github-activity-digest` | [wobblies/github-activity-digest/WOBBLIE.md](https://github.com/universe-backwards/wobblies-library/blob/master/wobblies/github-activity-digest/WOBBLIE.md) | Posts a low-noise scheduled digest of meaningful pull request and CI activity. |
-| Linear issue hygiene | `linear-bug-context-researcher` | [wobblies/linear-bug-context-researcher/WOBBLIE.md](https://github.com/universe-backwards/wobblies-library/blob/master/wobblies/linear-bug-context-researcher/WOBBLIE.md) | Adds concise repo-aware triage context to newly created Linear bugs and regressions. |
-| Linear issue hygiene | `linear-issue-duplicate-finder` | [wobblies/linear-issue-duplicate-finder/WOBBLIE.md](https://github.com/universe-backwards/wobblies-library/blob/master/wobblies/linear-issue-duplicate-finder/WOBBLIE.md) | Suggests likely duplicate or related Linear issues when new issues are created. |
-| Linear issue hygiene | `linear-issue-labeler` | [wobblies/linear-issue-labeler/WOBBLIE.md](https://github.com/universe-backwards/wobblies-library/blob/master/wobblies/linear-issue-labeler/WOBBLIE.md) | Keeps recently changed Linear issues aligned with the current Linear label set. |
-| Linear issue hygiene | `linear-pr-link-reconciler` | [wobblies/linear-pr-link-reconciler/WOBBLIE.md](https://github.com/universe-backwards/wobblies-library/blob/master/wobblies/linear-pr-link-reconciler/WOBBLIE.md) | Finds likely GitHub code work for Linear issues and asks for confirmation without editing links automatically. |
-| PR check repair | `pr-check-repair` | [wobblies/pr-check-repair/WOBBLIE.md](https://github.com/universe-backwards/wobblies-library/blob/master/wobblies/pr-check-repair/WOBBLIE.md) | Repairs failing GitHub-visible PR checks with focused evidence-grounded commits, flaky reruns, or low-noise blocked comments. |
-| PR merge conflict repair | `pr-merge-conflict-repair` | [wobblies/pr-merge-conflict-repair/WOBBLIE.md](https://github.com/universe-backwards/wobblies-library/blob/master/wobblies/pr-merge-conflict-repair/WOBBLIE.md) | Repairs clear merge conflicts on non-draft GitHub pull requests after target base branch changes, with focused verification and low-noise blocked comments. |
-| PR metadata management | `pr-metadata` | [wobblies/pr-metadata/WOBBLIE.md](https://github.com/universe-backwards/wobblies-library/blob/master/wobblies/pr-metadata/WOBBLIE.md) | Keeps PR title/body metadata complete, current, and linked to the correct issue item. |
-| PR review triage | `pr-review-triage` | [wobblies/pr-review-triage/WOBBLIE.md](https://github.com/universe-backwards/wobblies-library/blob/master/wobblies/pr-review-triage/WOBBLIE.md) | Triages PR review threads and top-level PR comments for merge-readiness, duplicate feedback, fixed items, and safe low-noise follow-up. |
-| Slack operations | `slack-alert-context-researcher` | [wobblies/slack-alert-context-researcher/WOBBLIE.md](https://github.com/universe-backwards/wobblies-library/blob/master/wobblies/slack-alert-context-researcher/WOBBLIE.md) | Replies to alert-like Slack bot messages with compact GitHub and incident context for triage. |
-| Slack planning | `slack-meeting-followup-planner` | [wobblies/slack-meeting-followup-planner/WOBBLIE.md](https://github.com/universe-backwards/wobblies-library/blob/master/wobblies/slack-meeting-followup-planner/WOBBLIE.md) | Turns Slack meeting notes or transcripts into concise, repo-aware follow-up options Wobblie can help execute. |
+| Dependency maintenance | `js-ts-dependency-upgrades` | [wobblies/js-ts-dependency-upgrades/WOBBLIE.md](https://github.com/wobblies-hq/wobblies-library/blob/main/wobblies/js-ts-dependency-upgrades/WOBBLIE.md) | Opens low-noise JavaScript/TypeScript dependency upgrade PRs with a configured package manager. |
+| Documentation freshness | `docs-drift-maintainer` | [wobblies/docs-drift-maintainer/WOBBLIE.md](https://github.com/wobblies-hq/wobblies-library/blob/main/wobblies/docs-drift-maintainer/WOBBLIE.md) | Repairs docs drift from recent merged source changes with small source-backed PRs. |
+| Documentation freshness | `docs-stale-maintainer` | [wobblies/docs-stale-maintainer/WOBBLIE.md](https://github.com/wobblies-hq/wobblies-library/blob/main/wobblies/docs-stale-maintainer/WOBBLIE.md) | Runs weekly to repair older outdated documentation in small source-backed PRs with a hard size limit. |
+| GitHub activity reporting | `github-activity-digest` | [wobblies/github-activity-digest/WOBBLIE.md](https://github.com/wobblies-hq/wobblies-library/blob/main/wobblies/github-activity-digest/WOBBLIE.md) | Posts a low-noise scheduled digest of meaningful pull request and CI activity. |
+| Linear issue hygiene | `linear-bug-context-researcher` | [wobblies/linear-bug-context-researcher/WOBBLIE.md](https://github.com/wobblies-hq/wobblies-library/blob/main/wobblies/linear-bug-context-researcher/WOBBLIE.md) | Adds concise repo-aware triage context to newly created Linear bugs and regressions. |
+| Linear issue hygiene | `linear-issue-duplicate-finder` | [wobblies/linear-issue-duplicate-finder/WOBBLIE.md](https://github.com/wobblies-hq/wobblies-library/blob/main/wobblies/linear-issue-duplicate-finder/WOBBLIE.md) | Suggests likely duplicate or related Linear issues when new issues are created. |
+| Linear issue hygiene | `linear-issue-labeler` | [wobblies/linear-issue-labeler/WOBBLIE.md](https://github.com/wobblies-hq/wobblies-library/blob/main/wobblies/linear-issue-labeler/WOBBLIE.md) | Keeps recently changed Linear issues aligned with the current Linear label set. |
+| Linear issue hygiene | `linear-pr-link-reconciler` | [wobblies/linear-pr-link-reconciler/WOBBLIE.md](https://github.com/wobblies-hq/wobblies-library/blob/main/wobblies/linear-pr-link-reconciler/WOBBLIE.md) | Finds likely GitHub code work for Linear issues and asks for confirmation without editing links automatically. |
+| PR check repair | `pr-check-repair` | [wobblies/pr-check-repair/WOBBLIE.md](https://github.com/wobblies-hq/wobblies-library/blob/main/wobblies/pr-check-repair/WOBBLIE.md) | Repairs failing GitHub-visible PR checks with focused evidence-grounded commits, flaky reruns, or low-noise blocked comments. |
+| PR merge conflict repair | `pr-merge-conflict-repair` | [wobblies/pr-merge-conflict-repair/WOBBLIE.md](https://github.com/wobblies-hq/wobblies-library/blob/main/wobblies/pr-merge-conflict-repair/WOBBLIE.md) | Repairs clear merge conflicts on non-draft GitHub pull requests after target base branch changes, with focused verification and low-noise blocked comments. |
+| PR metadata management | `pr-metadata` | [wobblies/pr-metadata/WOBBLIE.md](https://github.com/wobblies-hq/wobblies-library/blob/main/wobblies/pr-metadata/WOBBLIE.md) | Keeps PR title/body metadata complete, current, and linked to the correct issue item. |
+| PR review triage | `pr-review-triage` | [wobblies/pr-review-triage/WOBBLIE.md](https://github.com/wobblies-hq/wobblies-library/blob/main/wobblies/pr-review-triage/WOBBLIE.md) | Triages PR review threads and top-level PR comments for merge-readiness, duplicate feedback, fixed items, and safe low-noise follow-up. |
+| Slack operations | `slack-alert-context-researcher` | [wobblies/slack-alert-context-researcher/WOBBLIE.md](https://github.com/wobblies-hq/wobblies-library/blob/main/wobblies/slack-alert-context-researcher/WOBBLIE.md) | Replies to alert-like Slack bot messages with compact GitHub and incident context for triage. |
+| Slack planning | `slack-meeting-followup-planner` | [wobblies/slack-meeting-followup-planner/WOBBLIE.md](https://github.com/wobblies-hq/wobblies-library/blob/main/wobblies/slack-meeting-followup-planner/WOBBLIE.md) | Turns Slack meeting notes or transcripts into concise, repo-aware follow-up options Wobblie can help execute. |
 
 ## Generated examples catalog
 
@@ -104,7 +104,7 @@ wobblie validate --all --json
 
 Key safety defaults:
 
-- catalog reads default to `master` and support `--ref <sha|branch|tag>`;
+- catalog reads default to `main` and support `--ref <sha|branch|tag>`;
 - install copies only catalog-listed `WOBBLIE.md`, `scripts[]`, and `references[]` files from the same ref;
 - install never copies `example.yml` or crawls upstream directories;
 - install plans include destination paths and file modes (`100644`/`100755`);

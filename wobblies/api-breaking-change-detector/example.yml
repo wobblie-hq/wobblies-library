@@ -1,19 +1,34 @@
 id: api-breaking-change-detector
 title: "API Breaking Change Detector"
 status: ready
-summary: "Detects breaking changes in API endpoints and flags PRs that need versioning."
-readiness: direct-copy
+summary: "Detects breaking API changes in pull request diffs — removed endpoints, narrowed types, new required parameters, and changed response shapes — and comments with a classified table and migration hints."
+readiness: adapt-before-use
 showOnWebsite: true
 showInDashboard: true
 fit:
   jobsToBeDone:
     - maintain-and-modernize
   bestFor:
-    - Teams that want automated enforcement of this pattern.
+    - Teams maintaining public or internal APIs that must preserve backward compatibility.
+    - Repositories with REST, GraphQL, or OpenAPI contracts consumed by external clients.
   notFor:
-    - Teams that prefer manual review only.
+    - Greenfield projects with no existing API consumers.
+    - Internal tools where all consumers are updated in the same PR.
 requirements:
   requiredIntegrations:
     - github
   optionalIntegrations: []
   other: []
+adaptations:
+  - key: api_globs
+    label: API surface globs
+    description: Glob patterns identifying API surface files (route handlers, exported types, OpenAPI specs, GraphQL schemas).
+    required: true
+  - key: breaking_label
+    label: Breaking change label
+    description: GitHub label to apply when a breaking change is detected. Leave unset to skip labeling.
+    required: false
+    default: "breaking-change"
+specializationIdeas:
+  - Narrow api_globs to your specific route directory for faster checks.
+  - Set breaking_label to integrate with your release automation.

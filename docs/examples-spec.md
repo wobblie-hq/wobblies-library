@@ -1,6 +1,6 @@
 # Examples v2 package and catalog spec
 
-This is the repo-owned contract for example wobblie packages in `universe-backwards/wobblies-library` and the generated `examples.json` catalog.
+This is the repo-owned contract for example wobblie packages in `wobblies-hq/wobblies-library` and the generated `examples.json` catalog.
 
 It is normative for this repo's examples package layout, `example.yml` metadata, catalog generation, and validation. It is not a replacement for the public wobblie docs, which remain the source of truth for what `WOBBLIE.md` means and how wobblies behave:
 
@@ -309,7 +309,7 @@ Root shape:
 {
   "schemaVersion": 2,
   "source": {
-    "repository": "universe-backwards/wobblies-library",
+    "repository": "wobblies-hq/wobblies-library",
     "baseDirectory": "wobblies"
   },
   "examples": []

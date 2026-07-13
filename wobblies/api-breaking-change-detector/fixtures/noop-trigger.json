@@ -1,0 +1,18 @@
+{
+  "type": "pull_request",
+  "action": "opened",
+  "source": "github",
+  "payload": {
+    "repository": "acme-corp/demo-repo",
+    "number": 45,
+    "title": "docs: update README",
+    "head_branch": "docs/readme",
+    "base_branch": "main",
+    "draft": false,
+    "diff_files": ["README.md"]
+  },
+  "metadata": {
+    "deliveryId": "test-api-002",
+    "timestamp": "2026-01-15T10:05:00Z"
+  }
+}

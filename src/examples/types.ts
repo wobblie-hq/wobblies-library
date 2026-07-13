@@ -84,7 +84,7 @@ export type CatalogExample = ExampleMetadata & {
 export type ExamplesCatalog = {
   schemaVersion: 2;
   source: {
-    repository: 'wobblie-hq/wobblies-library';
+    repository: 'wobblies-hq/wobblies-library';
     baseDirectory: 'wobblies';
   };
   examples: CatalogExample[];

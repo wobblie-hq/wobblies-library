@@ -1,0 +1,19 @@
+{
+  "type": "pull_request",
+  "action": "opened",
+  "source": "github",
+  "payload": {
+    "repository": "acme-corp/demo-repo",
+    "number": 58,
+    "title": "feat: add Stripe integration",
+    "head_branch": "feat/stripe",
+    "base_branch": "main",
+    "draft": false,
+    "diff_files": ["src/payments/stripe.ts"],
+    "diff_summary": "Added process.env.STRIPE_SECRET_KEY and process.env.STRIPE_WEBHOOK_SECRET"
+  },
+  "metadata": {
+    "deliveryId": "test-env-001",
+    "timestamp": "2026-01-15T10:00:00Z"
+  }
+}

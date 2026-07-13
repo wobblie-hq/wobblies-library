@@ -5,7 +5,7 @@ integrations:
   - github
   - jira
 watch:
-  - A Jira issue is created with enough summary, description, label, or linked GitHub context to search for likely duplicates.
+  - when a Jira issue is created
 routines:
   - Skip the new issue when it is already resolved, closed, or otherwise inactive.
   - Search likely duplicate or related Jira issues, checking the same project before broader mapped repository context.

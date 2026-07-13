@@ -1,7 +1,7 @@
 id: release-drafter
 title: "Release Drafter"
 status: ready
-summary: "Maintains a draft GitHub release with categorized changes from merged pull requests."
+summary: "Appends categorized entries to a draft GitHub release on each PR merge, keeping release notes current without ever publishing."
 readiness: direct-copy
 showOnWebsite: true
 showInDashboard: true
@@ -9,11 +9,22 @@ fit:
   jobsToBeDone:
     - maintain-and-modernize
   bestFor:
-    - Teams that want automated enforcement of this pattern.
+    - Teams that publish GitHub releases and want automated release note accumulation as PRs merge.
+    - Repositories with a human-driven release process where the drafter reduces manual changelog work.
   notFor:
-    - Teams that prefer manual review only.
+    - Repositories that use fully automated release pipelines (semantic-release, changesets) that manage release notes directly.
+    - Teams that do not publish GitHub releases.
 requirements:
   requiredIntegrations:
     - github
   optionalIntegrations: []
   other: []
+adaptations:
+  - key: category_labels
+    label: Category labels map
+    description: JSON object mapping GitHub label names to release note category headings. Used to categorize PR entries.
+    required: false
+    default: '{"enhancement":"Features","feature":"Features","bug":"Fixes","fix":"Fixes","documentation":"Docs","docs":"Docs","chore":"Chores","dependencies":"Chores","breaking-change":"Breaking Changes"}'
+specializationIdeas:
+  - Add custom label mappings for internal labels like "perf" or "security".
+  - Restrict the trigger to a specific base branch if the repository uses release branches.

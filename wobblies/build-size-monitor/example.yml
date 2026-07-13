@@ -1,7 +1,7 @@
 id: build-size-monitor
 title: "Build Size Monitor"
 status: ready
-summary: "Tracks bundle size changes across PRs and flags significant increases with detailed breakdowns."
+summary: "Comments on pull requests that change dependency manifests or bundler configuration when the estimated bundle size impact exceeds a configurable threshold, helping teams prevent unintentional bloat."
 readiness: direct-copy
 showOnWebsite: true
 showInDashboard: true
@@ -9,11 +9,27 @@ fit:
   jobsToBeDone:
     - maintain-and-modernize
   bestFor:
-    - Teams that want automated enforcement of this pattern.
+    - Frontend teams shipping bundles to end users where size directly affects load time.
+    - Repositories where dependency creep has historically caused performance regressions.
   notFor:
-    - Teams that prefer manual review only.
+    - Backend-only services where bundle size is irrelevant.
+    - Monorepos with dedicated size-tracking CI already in place.
 requirements:
   requiredIntegrations:
     - github
   optionalIntegrations: []
   other: []
+adaptations:
+  - key: threshold_kb
+    label: Size threshold (KB)
+    description: Minimum estimated size impact in kilobytes before a comment is posted.
+    required: false
+    default: "50"
+  - key: size_command
+    label: Size measurement command
+    description: Sandbox command to run for precise size measurement (e.g. `npm run build:analyze`). When unset, the wobblie estimates from lockfile evidence.
+    required: false
+    default: ""
+specializationIdeas:
+  - Set size_command to your build analyzer for precise measurements instead of estimates.
+  - Lower threshold_kb for libraries where every KB matters.

@@ -1,7 +1,7 @@
 id: unused-dependency-remover
 title: "Unused Dependency Remover"
 status: ready
-summary: "Scans for unused npm packages and opens PRs to remove them."
+summary: "Scans for unused npm packages weekly and opens a pull request removing high-confidence unused dependencies with evidence."
 readiness: direct-copy
 showOnWebsite: true
 showInDashboard: true
@@ -9,11 +9,33 @@ fit:
   jobsToBeDone:
     - maintain-and-modernize
   bestFor:
-    - Teams that want automated enforcement of this pattern.
+    - Repositories that accumulate unused npm dependencies over time and want automated cleanup PRs.
+    - Teams that want evidence-backed dependency removal with a human review step before merging.
   notFor:
-    - Teams that prefer manual review only.
+    - Monorepos with complex cross-package dependency graphs where static analysis frequently produces false positives.
+    - Projects where dependency management is entirely automated by other tooling.
 requirements:
   requiredIntegrations:
     - github
   optionalIntegrations: []
-  other: []
+  other:
+    - A dependency scanner accessible via sandbox (e.g. depcheck or knip via pnpm dlx).
+adaptations:
+  - key: scan_command
+    label: Scan command
+    description: Shell command to scan for unused dependencies. Must produce JSON output.
+    required: false
+    default: "pnpm dlx depcheck --json"
+  - key: max_removals
+    label: Maximum packages per PR
+    description: Maximum number of packages to remove in a single pull request.
+    required: false
+    default: "3"
+  - key: scan_paths
+    label: Paths to scan
+    description: Directory or workspace paths to scan. Defaults to the repository root.
+    required: false
+    default: "."
+specializationIdeas:
+  - Tune max_removals to 1 for more conservative PRs that are easier to review.
+  - Configure scan_command with knip for more accurate detection in complex TypeScript projects.

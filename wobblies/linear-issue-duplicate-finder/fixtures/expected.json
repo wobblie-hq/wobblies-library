@@ -1,0 +1,11 @@
+{
+  "actions": [
+    {
+      "type": "linear.comment",
+      "contentMustMatch": ["duplicate", "confidence"],
+      "contentMustNotMatch": ["definitely duplicate"]
+    }
+  ],
+  "maxActions": 1,
+  "allowNoop": false
+}

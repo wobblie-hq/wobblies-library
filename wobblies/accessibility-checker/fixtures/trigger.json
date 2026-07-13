@@ -1,0 +1,19 @@
+{
+  "type": "pull_request",
+  "action": "opened",
+  "source": "github",
+  "payload": {
+    "repository": "acme-corp/demo-repo",
+    "number": 42,
+    "title": "feat: add signup form",
+    "head_branch": "feat/signup",
+    "base_branch": "main",
+    "draft": false,
+    "diff_files": ["src/components/SignupForm.tsx"],
+    "diff_summary": "Added <img> without alt, <input> without label, onClick on <div>"
+  },
+  "metadata": {
+    "deliveryId": "test-a11y-001",
+    "timestamp": "2026-01-15T10:00:00Z"
+  }
+}

@@ -41,12 +41,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/universe-backwards/wobblies-library.git"
+    "url": "git+https://github.com/wobblies-hq/wobblies-library.git"
   },
   "bugs": {
-    "url": "https://github.com/universe-backwards/wobblies-library/issues"
+    "url": "https://github.com/wobblies-hq/wobblies-library/issues"
   },
-  "homepage": "https://github.com/universe-backwards/wobblies-library#readme",
+  "homepage": "https://github.com/wobblies-hq/wobblies-library#readme",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {

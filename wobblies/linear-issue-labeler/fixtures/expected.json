@@ -1,0 +1,10 @@
+{
+  "actions": [
+    {
+      "type": "linear.update_issue",
+      "contentMustMatch": ["label"]
+    }
+  ],
+  "maxActions": 30,
+  "allowNoop": false
+}

@@ -434,6 +434,72 @@ Use this checklist before approving example changes.
 | Adaptation metadata error | Use unique `^[a-z][a-z0-9_]*$` keys, string-only fields/suggestions, no default on required items, and a default on optional items. |
 | Adaptation token error | Use exact `{{adapt.key}}` token syntax in `WOBBLIE.md` and support files, and declare each referenced key in `adaptations[]`. |
 
+## Authoring lint rules
+
+Every wobblie in the catalog is checked by the authoring lint (`src/examples/authoring-lint.ts`) during `bun run validate:examples`. All rules are enforced as errors — violations block CI.
+
+| Rule | Severity | What it checks |
+| --- | --- | --- |
+| `boilerplate-routines` | error | Rejects known stub routine strings (exact-match denylist). |
+| `boilerplate-body` | error | Rejects known stub body policy/limits phrases (exact-match denylist). |
+| `routine-specificity` | error | Every routine must share at least one meaningful token stem with the wobblie's `purpose`. Prevents generic routines that could belong to any wobblie. |
+| `trigger-coherence` | error | Schedule+watch both set requires a `## Trigger rationale` body section. Purpose implying scheduled scanning with watch-only triggers is flagged. Schedule-only wobblies must not mention "per PR" limits. |
+| `watch-rule-format` | error | Watch rules must match the platform parser format: `when a(n) <event> is <action>`. Non-conforming rules silently never fire on the platform. |
+| `capability-feasibility` | error/warn | Instructions requiring capabilities absent from the platform manifest (`src/examples/platform-capabilities.ts`) are flagged. Pending capabilities emit a warning; absent capabilities emit an error. |
+
+## Behavioral fixtures
+
+Every catalog wobblie must ship `fixtures/` containing:
+
+- `trigger.json` — a representative sanitized trigger event
+- `expected.json` — expected action envelope: action type(s), target shape, and assertable content constraints
+- `noop-trigger.json` + `noop-expected.json` — where meaningful, a low-signal trigger and no-op expectation
+
+Fixture format is defined in `src/examples/fixture-schema.ts` and documented in `docs/fixtures-spec.md`. The vitest suite `src/examples/__tests__/fixtures.test.ts` validates that:
+
+- every non-draft wobblie has fixtures
+- all fixture files parse against the zod schemas
+- every expected action type exists in the platform capability manifest
+- every regex in expectations compiles
+- trigger payloads pass public-safety scanning
+
+Use synthetic data in triggers (`acme-corp/demo-repo`, usernames `alice`/`bob`/`carol`).
+
+## WOBBLIE.md mandatory structure
+
+New contributions must follow this skeleton (modeled on `github-activity-digest` and `docs-drift-maintainer`):
+
+**Frontmatter:**
+
+- `id` — kebab-case, matches directory and `example.yml`
+- `purpose` — outcome-oriented, one sentence
+- `routines` — 3–6 purpose-specific routines (imperative, referencing the wobblie's actual signals)
+- `watch` and/or `schedule` — triggers matching the wobblie's nature (schedule XOR watch unless justified with a `## Trigger rationale` section)
+- `deny` — tailored deny list for adjacent risky behavior
+- `integrations` — required platform integrations
+
+**Body sections in order:**
+
+1. `## Overview` — what the wobblie does and why
+2. `## Scope` — what files, events, or resources it operates on
+3. `## Signal threshold` — include/exclude criteria for acting
+4. `## Low-noise behavior` — when to no-op
+5. `## Output format` — exact action type and content contract
+6. `## Limits` — bounds matching the trigger type (use "per run" for scheduled, not "per PR")
+
+**Watch rule format:**
+
+All watch rules must follow the platform parser format: `when a(n) <event> is <action>`. Examples:
+
+- `when a pull request is opened`
+- `when a pull request is synchronized`
+- `when a Linear issue is created`
+- `when a Slack message is posted`
+
+**Adaptation placeholders:**
+
+Use `{{adapt.key}}` for repo-specific values. Declare each key in `example.yml` `adaptations[]`.
+
 ## Quality bar
 
 A good example should let a reader answer these questions without reading validation code:

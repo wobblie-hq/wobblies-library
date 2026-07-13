@@ -1,0 +1,6 @@
+{
+  "actions": [],
+  "maxActions": 0,
+  "allowNoop": true,
+  "noopReason": "PR metadata edits are internal platform operations; no manifest-tracked actions emitted"
+}

@@ -1,0 +1,22 @@
+{
+  "type": "pull_request",
+  "action": "opened",
+  "source": "github",
+  "payload": {
+    "repository": "acme-corp/demo-repo",
+    "number": 69,
+    "title": "test: improve test coverage",
+    "head_branch": "test/improve-coverage",
+    "base_branch": "main",
+    "draft": false,
+    "coverage": {
+      "base_branch_percent": 85.2,
+      "pr_branch_percent": 87.5,
+      "uncovered_files": []
+    }
+  },
+  "metadata": {
+    "deliveryId": "test-coverage-002",
+    "timestamp": "2026-01-15T10:05:00Z"
+  }
+}

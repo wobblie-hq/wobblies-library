@@ -5,7 +5,7 @@ integrations:
   - notion
   - github
 watch:
-  - A Notion page in the configured docs database is updated.
+  - when a Notion page is updated
   - when a pull request is opened
 routines:
   - Determine whether the triggering change creates drift between a Notion page and its mapped repository document.

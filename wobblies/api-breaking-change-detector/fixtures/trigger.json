@@ -1,0 +1,19 @@
+{
+  "type": "pull_request",
+  "action": "opened",
+  "source": "github",
+  "payload": {
+    "repository": "acme-corp/demo-repo",
+    "number": 44,
+    "title": "refactor: rename user endpoints",
+    "head_branch": "refactor/user-api",
+    "base_branch": "main",
+    "draft": false,
+    "diff_files": ["src/api/users.ts", "src/api/routes.ts"],
+    "diff_summary": "Renamed GET /api/users to GET /api/v2/users, removed field 'legacy_id' from response"
+  },
+  "metadata": {
+    "deliveryId": "test-api-001",
+    "timestamp": "2026-01-15T10:00:00Z"
+  }
+}

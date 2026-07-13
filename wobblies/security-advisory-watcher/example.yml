@@ -1,7 +1,7 @@
 id: security-advisory-watcher
 title: "Security Advisory Watcher"
 status: ready
-summary: "Monitors GitHub security advisories for dependencies and opens issues for affected packages."
+summary: "Runs weekly dependency security audits via sandbox and opens tracking issues for high-severity vulnerable packages."
 readiness: direct-copy
 showOnWebsite: true
 showInDashboard: true
@@ -9,11 +9,38 @@ fit:
   jobsToBeDone:
     - maintain-and-modernize
   bestFor:
-    - Teams that want automated enforcement of this pattern.
+    - Repositories that use npm or pnpm and want scheduled vulnerability tracking without a dedicated security tool.
+    - Teams that want actionable GitHub issues for critical and high-severity dependency findings.
   notFor:
-    - Teams that prefer manual review only.
+    - Repositories already covered by dedicated vulnerability scanning services (Snyk, Dependabot) with issue creation enabled.
+    - Projects that cannot run `pnpm audit` or equivalent via sandbox.
 requirements:
   requiredIntegrations:
     - github
   optionalIntegrations: []
-  other: []
+  other:
+    - A package manager (pnpm, npm) accessible in the sandbox to run the audit command.
+adaptations:
+  - key: audit_command
+    label: Audit command
+    description: Shell command to run the dependency security audit. Must output JSON.
+    required: false
+    default: "pnpm audit --json"
+  - key: include_dev
+    label: Include dev dependencies
+    description: Set to true to audit devDependencies in addition to runtime dependencies.
+    required: false
+    default: "false"
+  - key: include_low_severity
+    label: Include low/moderate severity
+    description: Set to true to also report low and moderate severity findings (in addition to high and critical).
+    required: false
+    default: "false"
+  - key: ignore_advisories
+    label: Suppressed packages
+    description: JSON array of package names to suppress from vulnerability reporting (e.g. known false positives).
+    required: false
+    default: "[]"
+specializationIdeas:
+  - Add Slack notifications for critical-severity findings to a security channel.
+  - Tune the audit command to target a specific workspace in a monorepo.

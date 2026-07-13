@@ -269,7 +269,7 @@ const examplesCatalogSchema = z
     schemaVersion: z.literal(2),
     source: z
       .object({
-        repository: z.literal('wobblie-hq/wobblies-library'),
+        repository: z.literal('wobblies-hq/wobblies-library'),
         baseDirectory: z.literal('wobblies'),
       })
       .strict(),

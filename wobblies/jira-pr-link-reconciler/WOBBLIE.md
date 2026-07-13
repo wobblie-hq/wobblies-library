@@ -5,8 +5,8 @@ integrations:
   - github
   - jira
 watch:
-  - A Jira issue is created mentioning active GitHub code work or missing pull request linkage.
-  - A Jira issue comment is added mentioning active GitHub code work or missing pull request linkage.
+  - when a Jira issue is created
+  - when a Jira issue comment is added
 routines:
   - Decide whether the triggering issue or comment mentions active code work that may live in GitHub.
   - Search likely related GitHub pull requests, branches, and commits using the issue key, explicit URLs, summary terms, and branch names.

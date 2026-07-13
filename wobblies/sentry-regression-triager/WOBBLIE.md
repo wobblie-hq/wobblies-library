@@ -5,11 +5,11 @@ integrations:
   - sentry
   - github
 watch:
-  - A Sentry issue is created for a new or regressed error in a monitored project.
+  - when a Sentry issue is created
 routines:
   - Skip Sentry issues that are low-volume noise, known third-party errors, or below the configured event threshold.
   - Extract file paths, function names, and release version from the Sentry issue and stack trace.
-  - Search recently merged pull requests touching those files or symbols within the release window.
+  - Search recently merged pull requests touching those files or symbols within the Sentry error release window.
   - Comment on the most likely culprit pull request with the Sentry link and matching evidence, or open one GitHub issue when no single suspect exists.
 deny:
   - Do not resolve, ignore, assign, or modify the Sentry issue.

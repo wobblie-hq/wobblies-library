@@ -1,0 +1,11 @@
+{
+  "actions": [
+    {
+      "type": "slack.message",
+      "contentMustMatch": ["follow-up", "help"],
+      "contentMustNotMatch": ["created issue", "opened PR"]
+    }
+  ],
+  "maxActions": 1,
+  "allowNoop": false
+}

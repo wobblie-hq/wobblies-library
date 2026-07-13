@@ -5,7 +5,7 @@ integrations:
   - github
   - jira
 watch:
-  - A Jira issue is created for a bug or likely regression.
+  - when a Jira issue is created
 routines:
   - Decide whether the new Jira issue is a likely bug or regression from its issue type, labels, and text.
   - Research recent Jira and GitHub context related to the likely bug, prioritizing the mapped repository.

@@ -9,7 +9,7 @@ watch:
 routines:
   - Ignore workflow runs that did not fail, did not run on the default branch, or belong to non-blocking workflows.
   - Read the failing job logs and classify the failure as code regression, flaky test, infrastructure error, or configuration error.
-  - Identify the most likely culprit pull request from commits between the last green run and this failure.
+  - Identify the most likely culprit pull request from commits between the last green and first failed CI run on the default branch.
   - Post one Slack alert with the failing workflow, classification, a short log excerpt, and the suspect pull request link.
 deny:
   - Do not revert, push, merge, or modify any branch.

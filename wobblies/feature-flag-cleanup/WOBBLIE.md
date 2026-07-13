@@ -6,10 +6,10 @@ integrations:
 routines:
   - Scan the repository for feature flag definitions and usages matching the configured flag pattern.
   - Identify flags that are stale — permanently enabled in all configurations, referenced nowhere, or unchanged past the age threshold.
-  - Select the single highest-confidence stale flag.
+  - Select the single highest-confidence stale feature flag.
   - Open one pull request removing that flag and its dead branches, with evidence for why it is safe.
 deny:
-  - Do not remove more than one flag per pull request.
+  - Do not remove more than one flag per run.
   - Do not remove a flag whose value differs between environments or configurations.
   - Do not change runtime behavior; removals must be behavior-preserving given the flag's stuck value.
   - Do not touch flags matching the keep-list.
@@ -51,7 +51,7 @@ One pull request:
 ## Limits
 
 - Maximum 1 flag removed per run.
-- Maximum 10 files changed per PR; skip flags requiring broader changes.
+- Maximum 10 files changed per run; skip flags requiring broader changes.
 
 ## No-op when
 

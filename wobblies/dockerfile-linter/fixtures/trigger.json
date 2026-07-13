@@ -1,0 +1,19 @@
+{
+  "type": "pull_request",
+  "action": "opened",
+  "source": "github",
+  "payload": {
+    "repository": "acme-corp/demo-repo",
+    "number": 56,
+    "title": "feat: add Docker support",
+    "head_branch": "feat/docker",
+    "base_branch": "main",
+    "draft": false,
+    "diff_files": ["Dockerfile", "docker-compose.yml"],
+    "diff_summary": "FROM node:latest\nRUN apt-get install -y curl\nUSER root"
+  },
+  "metadata": {
+    "deliveryId": "test-docker-001",
+    "timestamp": "2026-01-15T10:00:00Z"
+  }
+}

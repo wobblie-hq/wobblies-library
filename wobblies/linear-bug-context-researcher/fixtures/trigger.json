@@ -1,0 +1,17 @@
+{
+  "type": "issue",
+  "action": "created",
+  "source": "linear",
+  "payload": {
+    "issue_id": "ENG-1234",
+    "title": "Login page crashes on Safari after recent auth refactor",
+    "description": "Users report a blank page on Safari 17. Stack trace shows TypeError in auth middleware.",
+    "labels": ["Bug"],
+    "team": "Engineering",
+    "repository": "acme-corp/demo-repo"
+  },
+  "metadata": {
+    "deliveryId": "test-linear-001",
+    "timestamp": "2026-01-15T09:30:00Z"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "actions": [
+    {
+      "type": "create_pr",
+      "targetPattern": "^acme-corp/demo-repo$",
+      "contentMustMatch": ["dep", "update"]
+    }
+  ],
+  "maxActions": 2,
+  "allowNoop": false
+}

@@ -1,0 +1,22 @@
+{
+  "type": "pull_request",
+  "action": "opened",
+  "source": "github",
+  "payload": {
+    "repository": "acme-corp/demo-repo",
+    "number": 70,
+    "title": "feat: add caching layer",
+    "head_branch": "feat/cache",
+    "base_branch": "main",
+    "draft": false,
+    "diff_files": ["src/cache/redis.ts"],
+    "new_todos": [
+      {"file": "src/cache/redis.ts", "line": 15, "text": "TODO: add TTL configuration"},
+      {"file": "src/cache/redis.ts", "line": 42, "text": "FIXME: handle connection retry"}
+    ]
+  },
+  "metadata": {
+    "deliveryId": "test-todo-001",
+    "timestamp": "2026-01-15T10:00:00Z"
+  }
+}
