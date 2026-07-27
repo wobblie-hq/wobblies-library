@@ -748,6 +748,54 @@
       }
     },
     {
+      "id": "first-response-triage",
+      "title": "Issue First-Response Triage",
+      "status": "ready",
+      "summary": "Gives every new issue a fast first response by classifying it, applying a type label, and requesting missing bug details.",
+      "readiness": "direct-copy",
+      "showOnWebsite": true,
+      "showInDashboard": true,
+      "fit": {
+        "jobsToBeDone": [
+          "organize",
+          "review-with-confidence"
+        ],
+        "bestFor": [
+          "Repositories that receive external or cross-team issues and want a consistent first touch.",
+          "Teams with an issue type label taxonomy such as bug, enhancement, and question."
+        ],
+        "notFor": [
+          "Private repositories where every issue is already triaged by a human immediately.",
+          "Teams without any issue label taxonomy."
+        ]
+      },
+      "requirements": {
+        "requiredIntegrations": [
+          "github"
+        ],
+        "optionalIntegrations": [],
+        "other": [
+          "Issue type labels such as bug, enhancement, or question already exist."
+        ]
+      },
+      "adaptations": [],
+      "specializationIdeas": [
+        "Tailor the requested bug details to the project's issue template fields.",
+        "Add area labels alongside the type label.",
+        "Adjust the acknowledgement tone to match the project's contributor guidelines."
+      ],
+      "wobblie": {
+        "path": "WOBBLIE.md",
+        "content": "---\nid: first-response-triage\npurpose: Give every newly opened issue a fast, consistent first response by classifying it, applying a type label, and requesting any missing details.\nwatch:\n  - when an issue is opened\nroutines:\n  - Classify the new issue as a bug, feature request, question, or unclear from its title and body.\n  - Apply the matching existing type label when the repository has one.\n  - Post one short comment that acknowledges the issue and, for suspected bugs, asks for any missing reproduction steps, version, or environment details.\ndeny:\n  - Do not close, assign, prioritize, or set milestones.\n  - Do not create new labels; apply only labels that already exist.\n  - Do not act on issues opened by Wobblie.\n  - Do not post more than one comment per issue.\n---\n\n# First Response Triage\n\n## Overview\n\nGives new issues an immediate, uniform first touch: a type label and a short acknowledging comment that pulls for the details a maintainer will need. It shortens time-to-first-response and improves the quality of incoming reports.\n\n## Policy\n\nClassify from the issue text only; when the type is unclear, apply no label and keep the comment to a plain acknowledgement. For suspected bugs, ask only for the specific details that are actually missing rather than a generic checklist.\n\n## Limits\n\nOne comment per issue, using existing labels only. This wobblie never closes, assigns, or prioritizes — those decisions stay with maintainers.\n"
+      },
+      "scripts": [],
+      "references": [],
+      "source": {
+        "directory": "wobblies/first-response-triage",
+        "url": "https://github.com/wobblies-hq/wobblies-library/tree/main/wobblies/first-response-triage"
+      }
+    },
+    {
       "id": "flaky-test-detector",
       "title": "Flaky Test Detector",
       "status": "ready",
@@ -802,6 +850,65 @@
       }
     },
     {
+      "id": "format-autofix-maintainer",
+      "title": "Format Autofix Maintainer",
+      "status": "ready",
+      "summary": "Opens one scheduled formatting-only pull request when the repository's formatter finds drift.",
+      "readiness": "adapt-before-use",
+      "showOnWebsite": true,
+      "showInDashboard": true,
+      "fit": {
+        "jobsToBeDone": [
+          "maintain-and-modernize"
+        ],
+        "bestFor": [
+          "Repositories with a single formatter or lint autofix command that is safe to run repo-wide.",
+          "Teams that want consistent formatting without enforcing it on every contributor commit."
+        ],
+        "notFor": [
+          "Repositories that enforce formatting in CI or a pre-commit hook already.",
+          "Codebases where the formatter is not safe to run across the whole tree."
+        ]
+      },
+      "requirements": {
+        "requiredIntegrations": [
+          "github"
+        ],
+        "optionalIntegrations": [],
+        "other": [
+          "A repo-local formatter or lint autofix command, plus a package manager and lockfile if dependencies are required."
+        ]
+      },
+      "adaptations": [
+        {
+          "key": "format_command",
+          "label": "Format command",
+          "description": "The command Wobblie runs to apply formatting or safe lint autofixes across the repository.",
+          "required": true,
+          "suggestions": [
+            "pnpm format",
+            "npm run format",
+            "prettier --write ."
+          ]
+        }
+      ],
+      "specializationIdeas": [
+        "Scope the formatter to specific directories or file globs.",
+        "Combine formatting with a safe lint autofix pass in the same command.",
+        "Change the schedule to match the team's review cadence."
+      ],
+      "wobblie": {
+        "path": "WOBBLIE.md",
+        "content": "---\nid: format-autofix-maintainer\npurpose: Keep the codebase consistently formatted by opening one scheduled formatting-only pull request when drift is found.\nschedule: '0 7 * * 1'\nroutines:\n  - Install dependencies and run `{{adapt.format_command}}` across the repository in the sandbox.\n  - Keep the changes to formatting and safe lint autofixes only, with no behavioral or logic edits.\n  - Open one pull request with the formatting changes and a short summary when the working tree is not clean.\ndeny:\n  - Do not make logic, dependency, or behavioral changes.\n  - Do not edit generated files, vendored or third-party directories, or lockfiles.\n  - Do not modify tests to make checks pass.\n  - Do not open more than one formatting pull request at a time.\n  - Do not open a pull request when the formatter produced no changes.\n---\n\n# Format Autofix Maintainer\n\n## Overview\n\nRuns the repository's formatter on a weekly schedule and, when it finds drift, opens a single formatting-only pull request. It keeps style consistent without asking every contributor to remember to run the formatter.\n\n## Policy\n\nChanges must be formatting or safe lint autofixes only — no logic, dependency, or behavioral edits. If applying the formatter would touch generated output, vendored code, or lockfiles, leave those files alone. When the working tree is already clean, do nothing.\n\n## Limits\n\nAt most one open formatting pull request at a time. Keep the diff reviewable and the summary short. Never adjust tests or configuration to force a green result.\n"
+      },
+      "scripts": [],
+      "references": [],
+      "source": {
+        "directory": "wobblies/format-autofix-maintainer",
+        "url": "https://github.com/wobblies-hq/wobblies-library/tree/main/wobblies/format-autofix-maintainer"
+      }
+    },
+    {
       "id": "github-activity-digest",
       "title": "GitHub Activity Digest",
       "status": "ready",
@@ -850,7 +957,7 @@
       ],
       "wobblie": {
         "path": "WOBBLIE.md",
-        "content": "---\nid: github-activity-digest\npurpose: Publish one low-noise daily digest of meaningful GitHub pull request and CI activity.\nroutines:\n  - Collect meaningful GitHub pull request and CI activity since the previous scheduled run.\n  - Select only high-signal activity items that changed what the team needs to know or do.\n  - Post one concise digest to the configured Slack channel when the signal threshold is met.\ndeny:\n  - Do not modify GitHub state.\n  - Do not create more than one digest message for the same UTC date.\n  - Do not post raw event dumps, long watch lists, speculative metrics, or inferred performance scores.\n  - Do not name people in problem-oriented bullets unless the team policy explicitly allows it.\n  - Do not post on low-signal days unless the team explicitly wants quiet-day confirmations.\nschedule: \"0 15 * * 1-5\"\n---\n\n# GitHub Activity Digest\n\n## Repository configuration\n\nUse this repository-specific value:\n\n- Slack channel: `{{adapt.slack_channel}}`\n\n## Scope\n\nCollect activity from the repository that contains this wobblie.\n\nDefault window:\n\n- previous scheduled run to current scheduled run\n- Monday includes weekend activity since the prior Friday run\n\n## Signal threshold\n\nInclude activity only when it changes what the team needs to know or do.\n\nExamples:\n\n- pull request merged\n- pull request opened and ready for review\n- pull request unblocked\n- recurring CI failure affecting active work\n\nExclude:\n\n- label-only churn\n- assignment-only changes\n- bot housekeeping\n- comment-only chatter without action\n- duplicate references to the same underlying change\n\n## Low-noise behavior\n\nIf fewer than two meaningful items exist, do not post unless the single item is a critical blocker or unblocker.\n\nIf no item meets the signal threshold, no-op silently.\n\nNo-op silently when there has been no repository activity since the previous scheduled run.\n\nBefore posting, inspect the configured Slack channel for an equivalent digest for the same UTC date. If one exists, no-op silently.\n\n## Output format\n\nUse `references/digest-template.md`.\n\nFormat the Slack message with Slack `mrkdwn`, not standard Markdown. Use Slack link syntax (`<url|label>`), bold section labels with `*text*`, and plain hyphen bullets. Do not use Markdown headings, Markdown links (`[label](url)`), tables, nested lists, or code fences in the final Slack message.\n\nLimits:\n\n- 1 link maximum per bullet\n- no tables\n- no nested bullet lists\n- no unverified counts\n\n## Communication policy\n\nNo-op silently when no item meets the signal threshold, duplicate detection shows today's digest already exists, or required configuration is missing.\n\nDo not post a digest asking for configuration or policy decisions. Surface blockers only when a configured safe Slack channel exists and human action is required.\n"
+        "content": "---\nid: github-activity-digest\npurpose: Publish one low-noise daily digest of meaningful GitHub pull request and CI activity.\nintegrations:\n  - github\n  - slack\nroutines:\n  - Collect meaningful GitHub pull request and CI activity since the previous scheduled run.\n  - Select only high-signal activity items that changed what the team needs to know or do.\n  - Post one concise digest to the configured Slack channel when the signal threshold is met.\ndeny:\n  - Do not modify GitHub state.\n  - Do not create more than one digest message for the same UTC date.\n  - Do not post raw event dumps, long watch lists, speculative metrics, or inferred performance scores.\n  - Do not name people in problem-oriented bullets unless the team policy explicitly allows it.\n  - Do not post on low-signal days unless the team explicitly wants quiet-day confirmations.\nschedule: \"0 15 * * 1-5\"\n---\n\n# GitHub Activity Digest\n\n## Repository configuration\n\nUse this repository-specific value:\n\n- Slack channel: `{{adapt.slack_channel}}`\n\n## Scope\n\nCollect activity from the repository that contains this wobblie.\n\nDefault window:\n\n- previous scheduled run to current scheduled run\n- Monday includes weekend activity since the prior Friday run\n\n## Signal threshold\n\nInclude activity only when it changes what the team needs to know or do.\n\nExamples:\n\n- pull request merged\n- pull request opened and ready for review\n- pull request unblocked\n- recurring CI failure affecting active work\n\nExclude:\n\n- label-only churn\n- assignment-only changes\n- bot housekeeping\n- comment-only chatter without action\n- duplicate references to the same underlying change\n\n## Low-noise behavior\n\nIf fewer than two meaningful items exist, do not post unless the single item is a critical blocker or unblocker.\n\nIf no item meets the signal threshold, no-op silently.\n\nNo-op silently when there has been no repository activity since the previous scheduled run.\n\nBefore posting, inspect the configured Slack channel for an equivalent digest for the same UTC date. If one exists, no-op silently.\n\n## Output format\n\nUse `references/digest-template.md`.\n\nFormat the Slack message with Slack `mrkdwn`, not standard Markdown. Use Slack link syntax (`<url|label>`), bold section labels with `*text*`, and plain hyphen bullets. Do not use Markdown headings, Markdown links (`[label](url)`), tables, nested lists, or code fences in the final Slack message.\n\nLimits:\n\n- 1 link maximum per bullet\n- no tables\n- no nested bullet lists\n- no unverified counts\n\n## Communication policy\n\nNo-op silently when no item meets the signal threshold, duplicate detection shows today's digest already exists, or required configuration is missing.\n\nDo not post a digest asking for configuration or policy decisions. Surface blockers only when a configured safe Slack channel exists and human action is required.\n"
       },
       "scripts": [],
       "references": [
@@ -1851,6 +1958,53 @@
       }
     },
     {
+      "id": "pr-path-labeler",
+      "title": "PR Path Labeler",
+      "status": "ready",
+      "summary": "Applies the repository's existing area or component labels to pull requests based on the files they change.",
+      "readiness": "direct-copy",
+      "showOnWebsite": true,
+      "showInDashboard": true,
+      "fit": {
+        "jobsToBeDone": [
+          "organize"
+        ],
+        "bestFor": [
+          "Repositories with an established area or component label taxonomy that maps to top-level directories.",
+          "Teams that route review or triage by label and want consistent tagging without manual effort."
+        ],
+        "notFor": [
+          "Repositories without a stable label taxonomy.",
+          "Teams that intentionally keep pull requests unlabeled."
+        ]
+      },
+      "requirements": {
+        "requiredIntegrations": [
+          "github"
+        ],
+        "optionalIntegrations": [],
+        "other": [
+          "An existing area or component label taxonomy in the repository."
+        ]
+      },
+      "adaptations": [],
+      "specializationIdeas": [
+        "Maintain an explicit path-to-label mapping for areas that do not follow directory names.",
+        "Add size labels derived from the pull request diff.",
+        "Restrict labeling to a subset of directories that matter most for routing."
+      ],
+      "wobblie": {
+        "path": "WOBBLIE.md",
+        "content": "---\nid: pr-path-labeler\npurpose: Keep pull requests organized by applying the repository's existing area or component labels based on the files each pull request changes.\nwatch:\n  - when a pull request is opened\n  - when a pull request is synchronized\nroutines:\n  - Run the GitHub CLI to list the pull request's changed files and the repository's existing labels.\n  - Choose the existing labels that best describe the changed areas, preferring top-level component or area labels.\n  - Apply those labels to the pull request.\ndeny:\n  - Do not create new labels; apply only labels that already exist.\n  - Do not remove labels.\n  - Do not comment, review, approve, merge, or request reviewers.\n  - Do not act on draft pull requests.\n  - Do not apply more than a few labels to one pull request.\n---\n\n# PR Path Labeler\n\n## Overview\n\nApplies consistent area or component labels to pull requests based on which paths they touch, so triage and filtering stay reliable without manual tagging.\n\n## Policy\n\nMap changed paths to the closest existing labels using the repository's own taxonomy. When the changed files span several areas, prefer the few most representative labels rather than tagging everything. When no existing label clearly matches, apply nothing.\n\n## Limits\n\nOnly apply labels that already exist; never invent new ones. Keep to a small number of labels per pull request, and make no other changes.\n"
+      },
+      "scripts": [],
+      "references": [],
+      "source": {
+        "directory": "wobblies/pr-path-labeler",
+        "url": "https://github.com/wobblies-hq/wobblies-library/tree/main/wobblies/pr-path-labeler"
+      }
+    },
+    {
       "id": "pr-review-triage",
       "title": "PR review triage",
       "status": "ready",
@@ -1972,6 +2126,66 @@
       }
     },
     {
+      "id": "pr-test-runner",
+      "title": "Pull Request Test Runner",
+      "status": "ready",
+      "summary": "Runs the repository's test suite against each pull request and posts a single pass or fail comment with failing output.",
+      "readiness": "adapt-before-use",
+      "showOnWebsite": true,
+      "showInDashboard": true,
+      "fit": {
+        "jobsToBeDone": [
+          "review-with-confidence",
+          "operate"
+        ],
+        "bestFor": [
+          "Repositories with a fast, deterministic test command that installs and runs cleanly in a sandbox.",
+          "Teams that want real per-PR test signal without wiring a separate CI job."
+        ],
+        "notFor": [
+          "Repositories whose tests require external services, production secrets, or long-running infrastructure.",
+          "Teams whose CI already posts equivalent per-PR test status."
+        ]
+      },
+      "requirements": {
+        "requiredIntegrations": [
+          "github"
+        ],
+        "optionalIntegrations": [],
+        "other": [
+          "A repo-local test command that installs and runs in a sandbox without production secrets."
+        ]
+      },
+      "adaptations": [
+        {
+          "key": "test_command",
+          "label": "Test command",
+          "description": "The command Wobblie runs to execute the repository's tests, including any install step.",
+          "required": true,
+          "suggestions": [
+            "pnpm install && pnpm test",
+            "npm ci && npm test",
+            "make test"
+          ]
+        }
+      ],
+      "specializationIdeas": [
+        "Scope the runner to a single package or workspace in a monorepo.",
+        "Add a lint or type-check command alongside tests for a combined gate.",
+        "Post results only on failure to reduce comment noise on green pull requests."
+      ],
+      "wobblie": {
+        "path": "WOBBLIE.md",
+        "content": "---\nid: pr-test-runner\npurpose: Run the repository's test suite against each pull request and report a single pass or fail summary with the failing output.\nwatch:\n  - when a pull request is opened\n  - when a pull request is synchronized\nroutines:\n  - Check out the pull request head, install dependencies, and run `{{adapt.test_command}}` in the sandbox.\n  - Summarize the result as a single pass or fail outcome with a short tail of any failing output.\n  - Post one comment with the pull request's pass or fail test result, updating or replacing the prior comment on later runs instead of stacking new ones.\ndeny:\n  - Do not modify source code, tests, or configuration.\n  - Do not open pull requests, approve, merge, request changes, or submit reviews.\n  - Do not act on draft pull requests.\n  - Do not post more than one test-result comment per pull request head commit.\n  - Do not report a pass unless the configured command exited successfully.\n---\n\n# PR Test Runner\n\n## Overview\n\nRuns the repository's real test suite against each pull request head in an isolated sandbox and reports one concise pass or fail comment. Unlike static review wobblies, its signal comes from actually executing the tests, not from inspecting the diff.\n\n## Policy\n\nReport only an outcome the command actually produced. On failure, include a short tail of the failing output — enough for a reviewer to act, not the full log. If dependencies cannot be installed or the command cannot run, say so plainly rather than inferring a result.\n\n## Limits\n\nOne test-result comment per pull request head commit. Keep the failing excerpt short and readable. This wobblie only reads, runs, and reports — it never modifies the repository.\n"
+      },
+      "scripts": [],
+      "references": [],
+      "source": {
+        "directory": "wobblies/pr-test-runner",
+        "url": "https://github.com/wobblies-hq/wobblies-library/tree/main/wobblies/pr-test-runner"
+      }
+    },
+    {
       "id": "release-drafter",
       "title": "Release Drafter",
       "status": "ready",
@@ -2087,6 +2301,52 @@
       "source": {
         "directory": "wobblies/release-notes-broadcaster",
         "url": "https://github.com/wobblies-hq/wobblies-library/tree/main/wobblies/release-notes-broadcaster"
+      }
+    },
+    {
+      "id": "secret-leak-guard",
+      "title": "Secret Leak Guard",
+      "status": "ready",
+      "summary": "Flags likely committed secrets or credentials in a pull request diff, with the value redacted, before they merge.",
+      "readiness": "direct-copy",
+      "showOnWebsite": true,
+      "showInDashboard": true,
+      "fit": {
+        "jobsToBeDone": [
+          "review-with-confidence",
+          "operate"
+        ],
+        "bestFor": [
+          "Repositories that want a fast, reviewable backstop against accidental secret commits.",
+          "Teams without a dedicated secret-scanning tool already gating pull requests."
+        ],
+        "notFor": [
+          "Repositories that already enforce push protection or a dedicated secret scanner on every change.",
+          "Teams that require blocking enforcement rather than an advisory comment."
+        ]
+      },
+      "requirements": {
+        "requiredIntegrations": [
+          "github"
+        ],
+        "optionalIntegrations": [],
+        "other": []
+      },
+      "adaptations": [],
+      "specializationIdeas": [
+        "Tune the detection to the credential formats the organization actually uses.",
+        "Add an allowlist for known test fixtures or example values.",
+        "Escalate high-confidence findings by also opening a tracking issue."
+      ],
+      "wobblie": {
+        "path": "WOBBLIE.md",
+        "content": "---\nid: secret-leak-guard\npurpose: Catch likely committed secrets or credentials in a pull request before they merge, and prompt for rotation.\nwatch:\n  - when a pull request is opened\n  - when a pull request is synchronized\nroutines:\n  - Inspect the added lines in the pull request diff for values that look like credentials, such as API keys, tokens, private keys, connection strings, or other high-entropy secrets.\n  - Post one comment listing each suspected secret by file and line, with the value redacted.\n  - Recommend rotating any real secret and removing it from version history.\ndeny:\n  - Do not modify source code or configuration.\n  - Do not approve, merge, request changes, or submit reviews.\n  - Do not post any suspected secret value in clear text; always redact it.\n  - Do not act on draft pull requests.\n  - Do not post a comment when no likely secret is found.\n  - Do not post more than one comment per pull request head commit.\n---\n\n# Secret Leak Guard\n\n## Overview\n\nScans the added lines of each pull request for values that look like credentials and flags them in one comment before they reach the default branch. It is a fast, reviewable backstop against accidental secret commits.\n\n## Policy\n\nJudge only added lines and prefer precision over recall: flag values with clear credential shape or high entropy, and stay silent when nothing qualifies. Always redact the suspected value in the comment — show enough context to locate it, never the secret itself.\n\n## Limits\n\nOne comment per pull request head commit, and only when there is a likely secret. This wobblie reports and advises; it does not edit code, block merges, or rotate anything itself.\n"
+      },
+      "scripts": [],
+      "references": [],
+      "source": {
+        "directory": "wobblies/secret-leak-guard",
+        "url": "https://github.com/wobblies-hq/wobblies-library/tree/main/wobblies/secret-leak-guard"
       }
     },
     {
@@ -2480,6 +2740,72 @@
       "source": {
         "directory": "wobblies/stale-issue-closer",
         "url": "https://github.com/wobblies-hq/wobblies-library/tree/main/wobblies/stale-issue-closer"
+      }
+    },
+    {
+      "id": "stale-issue-warden",
+      "title": "Stale Issue Warden",
+      "status": "ready",
+      "summary": "Warns on inactive issues and closes them only after a grace period, with a per-run cap and label exemptions.",
+      "readiness": "adapt-before-use",
+      "showOnWebsite": true,
+      "showInDashboard": true,
+      "fit": {
+        "jobsToBeDone": [
+          "organize",
+          "operate"
+        ],
+        "bestFor": [
+          "Repositories with a large or noisy open-issue backlog that needs regular hygiene.",
+          "Teams comfortable with warn-then-close automation bounded by clear thresholds and exemptions."
+        ],
+        "notFor": [
+          "Small repositories where every issue is expected to stay open until resolved.",
+          "Teams that consider issue closure a human-only decision."
+        ]
+      },
+      "requirements": {
+        "requiredIntegrations": [
+          "github"
+        ],
+        "optionalIntegrations": [],
+        "other": [
+          "A stale label exists, and exempt labels such as pinned, security, or roadmap are defined."
+        ]
+      },
+      "adaptations": [
+        {
+          "key": "grace_days",
+          "label": "Grace period (days)",
+          "description": "Additional days of inactivity after a warning before the issue is closed.",
+          "required": false,
+          "default": "14"
+        },
+        {
+          "key": "inactivity_days",
+          "label": "Inactivity window (days)",
+          "description": "Days of no activity before an issue is warned as stale.",
+          "required": true,
+          "suggestions": [
+            "60",
+            "90"
+          ]
+        }
+      ],
+      "specializationIdeas": [
+        "Expand the exempt-label set to match the team's conventions.",
+        "Lower the per-run cap during an initial rollout, then raise it once trusted.",
+        "Add a friendly close message that invites reopening with new information."
+      ],
+      "wobblie": {
+        "path": "WOBBLIE.md",
+        "content": "---\nid: stale-issue-warden\npurpose: Keep the open-issue list current by warning on inactive issues and closing them only after a grace period.\nschedule: '0 8 * * 1'\nroutines:\n  - Run the GitHub CLI to list open issues with no activity for at least {{adapt.inactivity_days}} days.\n  - Comment a single stale warning and apply the stale label on newly inactive issues that have not been warned before.\n  - Close issues that were already warned and stayed inactive for a further {{adapt.grace_days}} days.\ndeny:\n  - Do not close an issue that has not received a prior stale warning.\n  - Do not act on issues carrying an exempt label such as pinned, security, roadmap, or keep-open.\n  - Do not remove labels a human applied.\n  - Do not touch more than 20 issues in a single run.\n  - Do not reopen issues or act on pull requests.\n---\n\n# Stale Issue Warden\n\n## Overview\n\nRuns weekly to keep the open-issue backlog honest: it warns once on issues that have gone quiet, then closes them only if they stay inactive through a grace period. Every close is preceded by a visible warning, so nothing disappears silently.\n\n## Policy\n\nWarn before closing, always. Treat the inactivity window ({{adapt.inactivity_days}} days) and grace period ({{adapt.grace_days}} days) as hard thresholds. Skip any issue that carries an exempt label. When in doubt about whether an issue is truly inactive, leave it alone.\n\n## Limits\n\nTouch at most 20 issues per run to keep activations small and reviewable. Never reopen issues, never remove human labels, and never act on pull requests.\n"
+      },
+      "scripts": [],
+      "references": [],
+      "source": {
+        "directory": "wobblies/stale-issue-warden",
+        "url": "https://github.com/wobblies-hq/wobblies-library/tree/main/wobblies/stale-issue-warden"
       }
     },
     {

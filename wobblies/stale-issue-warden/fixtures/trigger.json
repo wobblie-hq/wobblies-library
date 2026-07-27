@@ -1,0 +1,17 @@
+{
+  "type": "schedule",
+  "source": "schedule",
+  "payload": {
+    "repository": "acme-corp/demo-repo",
+    "schedule": "0 8 * * 1",
+    "inactivity_days": 60,
+    "grace_days": 7,
+    "stale_candidates": [
+      { "number": 91, "title": "Investigate slow dashboard load", "days_inactive": 74, "already_warned": false }
+    ]
+  },
+  "metadata": {
+    "deliveryId": "test-stale-issue-warden-001",
+    "timestamp": "2026-01-19T08:00:00Z"
+  }
+}

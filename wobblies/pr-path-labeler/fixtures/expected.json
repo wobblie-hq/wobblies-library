@@ -1,0 +1,12 @@
+{
+  "actions": [
+    {
+      "type": "label",
+      "targetPattern": "^acme-corp/demo-repo#\\d+$",
+      "contentMustMatch": ["auth"],
+      "contentMustNotMatch": ["docs"]
+    }
+  ],
+  "maxActions": 1,
+  "allowNoop": false
+}

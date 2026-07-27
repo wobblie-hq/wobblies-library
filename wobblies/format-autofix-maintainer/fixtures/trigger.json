@@ -1,0 +1,14 @@
+{
+  "type": "schedule",
+  "source": "schedule",
+  "payload": {
+    "repository": "acme-corp/demo-repo",
+    "schedule": "0 7 * * 1",
+    "format_command": "pnpm format",
+    "unformatted_files": ["src/api/routes.ts", "src/ui/Button.tsx"]
+  },
+  "metadata": {
+    "deliveryId": "test-format-autofix-001",
+    "timestamp": "2026-01-19T07:00:00Z"
+  }
+}
