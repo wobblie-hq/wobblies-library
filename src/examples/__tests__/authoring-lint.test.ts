@@ -335,7 +335,11 @@ describe('capability-feasibility rule', () => {
     expect(findings.some((f) => f.message.includes('github.security_advisories'))).toBe(true);
   });
 
-  test('warns for a wobblie requiring pending capabilities (workflow runs)', () => {
+  // github.list_workflow_runs shipped on 2026-07-27 and was removed from
+  // pendingCapabilities. This now guards the opposite direction: a shipped
+  // capability must not be reported as pending platform delivery. If it is
+  // ever re-added to the pending set by mistake, this fails.
+  test('does not warn as pending for a shipped capability (workflow runs)', () => {
     const wobblie = makeWobblie({
       frontmatter: {
         id: 'flaky-test-detector',
@@ -350,9 +354,13 @@ describe('capability-feasibility rule', () => {
       body: '## Signal threshold\nFlag tests that fail in >20% of runs.\n\n## Low-noise behavior\nNo-op when no tests meet the threshold.\n\n## Output format\nPost a Slack message listing flaky tests.\n\n## Limits\nMaximum 1 message per scheduled run.',
     });
     const findings = findingsFor('capability-feasibility', wobblie);
-    expect(findings.length).toBeGreaterThanOrEqual(1);
-    expect(findings.some((f) => f.severity === 'warn')).toBe(true);
-    expect(findings.some((f) => f.message.includes('github.list_workflow_runs'))).toBe(true);
+    expect(
+      findings.some(
+        (f) =>
+          f.message.includes('github.list_workflow_runs') &&
+          f.message.includes('pending platform delivery'),
+      ),
+    ).toBe(false);
   });
 
   test('passes for linear integration (known capability)', () => {

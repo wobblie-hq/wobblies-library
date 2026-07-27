@@ -65,15 +65,13 @@ export const PLATFORM_CAPABILITIES = {
 
     /**
      * Read actions the platform can perform.
-     * NOTE: github.list_prs, github.list_workflow_runs, and slack.read_channel
-     * are pending platform Task 1 (wobblie-reliability). They are listed here
-     * so the library can author wobblies that use them, but the capability lint
-     * will emit a `warn` (not `error`) for these capabilities until they ship.
+     * All three shipped on 2026-07-27 (pending since 2026-07-05 under platform
+     * Task 1, wobblie-reliability), so the capability lint no longer warns.
      */
     read: [
-      "github.list_prs",          // pendingSince: "2026-07-05"
-      "github.list_workflow_runs", // pendingSince: "2026-07-05"
-      "slack.read_channel",        // pendingSince: "2026-07-05"
+      "github.list_prs",
+      "github.list_workflow_runs",
+      "slack.read_channel",
     ] as const,
 
     /**
@@ -105,9 +103,10 @@ export const PLATFORM_CAPABILITIES = {
    * so the library is not blocked on platform sequencing.
    */
   pendingCapabilities: new Set([
-    "github.list_prs",
-    "github.list_workflow_runs",
-    "slack.read_channel",
+    // github.list_prs, github.list_workflow_runs and slack.read_channel shipped
+    // on 2026-07-27 — all three are now in wobblie.ai's
+    // PLATFORM_AVAILABLE_ACTIONS (packages/core/src/capability-lint.ts) and
+    // backed by tools in apps/api/src/lib/tools/registry.ts.
     "gh",
   ]),
 
