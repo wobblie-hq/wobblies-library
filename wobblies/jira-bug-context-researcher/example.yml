@@ -1,0 +1,27 @@
+id: jira-bug-context-researcher
+title: Jira Bug Context Researcher
+status: draft
+summary: Adds concise repo-aware triage context to newly created Jira bugs and regressions.
+readiness: direct-copy
+showOnWebsite: true
+showInDashboard: true
+fit:
+  jobsToBeDone:
+    - organize
+  bestFor:
+    - Teams triaging Jira bugs that usually trace back to recent code changes.
+    - Projects with a clear Jira-to-repository mapping.
+  notFor:
+    - Jira projects tracking non-engineering work.
+    - Bugs spanning many repositories with no primary mapping.
+requirements:
+  requiredIntegrations:
+    - jira
+    - github
+  optionalIntegrations: []
+  other:
+    - Jira project mapped to this repository.
+specializationIdeas:
+  - Prioritize searching areas owned by the reporting team.
+  - Add links to runbooks when the bug matches a known operational pattern.
+  - Restrict to specific issue types or priority levels.

@@ -33,7 +33,7 @@ node dist/bin.js list --json
 
 ## Catalog source and pinned refs
 
-The root `examples.json` file is the source of truth. The CLI reads it from `universe-backwards/wobblies-library` and defaults to `master`:
+The root `examples.json` file is the source of truth. The CLI reads it from `wobblies-hq/wobblies-library` and defaults to `main`:
 
 ```bash
 wobblie list
@@ -49,7 +49,7 @@ wobblie add dependency-upgrades --ref 11da8066b1e0cf968d07ce512f65a9a817f9bc10
 
 A single command uses the same ref for `examples.json` and every support-file fetch.
 
-The v2 catalog uses `schemaVersion: 2`, and the CLI fails closed on unsupported catalog schema versions. When v2 reaches `master`, old `@wobblies/library@0.0.1` clients that read the default `master` catalog will stop working until they upgrade to `@wobblies/library@2.0.0` or pin an older compatible ref.
+The v2 catalog uses `schemaVersion: 2`, and the CLI fails closed on unsupported catalog schema versions. When v2 reaches `main`, old `@wobblies/library@0.0.1` clients that read the default `main` catalog will stop working until they upgrade to `@wobblies/library@2.0.0` or pin an older compatible ref.
 
 ## Commands
 
@@ -60,7 +60,7 @@ Reads root `examples.json` and prints stable example IDs.
 ```bash
 wobblie list
 
-wobblie list --ref master --json
+wobblie list --ref main --json
 ```
 
 JSON data includes `exampleIds[]`, compact `examples[]`, `sourceRepo`, `sourceRef`, and `schemaVersion`.
@@ -116,7 +116,7 @@ Examples:
 wobblie add js-ts-dependency-upgrades --dry-run \
   --adapt package_manager=pnpm
 
-wobblie install docs-drift-maintainer --ref master
+wobblie install docs-drift-maintainer --ref main
 
 wobblie add pr-merge-conflict-repair --allow-deprecated --dry-run
 
@@ -169,7 +169,7 @@ wobblie pr open js-ts-dependency-upgrades \
 Options:
 
 - `--repo owner/repo` is required and selects the target GitHub repository.
-- `--ref <sha|branch|tag>` pins the wobblie catalog source ref. It defaults to `master`.
+- `--ref <sha|branch|tag>` pins the wobblie catalog source ref. It defaults to `main`.
 - `--base <branch>` selects the target PR base branch. If omitted, the GitHub repository default branch is used.
 - `--adapt key=value` and `--adapt-file adaptations.json` use the same structured adaptation rules and precedence as `wobblie add`.
 - `--force` allows the PR commit to write catalog-managed install paths even when the target base already contains `.wobblies/<example-id>/`. Without `--force`, existing target files or directories are reported as collisions and no branch is created.

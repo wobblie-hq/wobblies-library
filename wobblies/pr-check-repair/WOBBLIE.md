@@ -4,7 +4,7 @@ purpose: Repair failing checks on non-draft pull requests by diagnosing the trig
 integrations:
   - github
 watch:
-  - A GitHub check run, check suite, or commit status from GitHub or an integrated provider reports a non-successful result on the current head of a non-draft pull request, including failure, error, timed_out, cancelled, or action required.
+  - when a check run is completed
 routines:
   - Diagnose the triggering failing check using check logs, provider data, local reproduction, repo context, PR diff, and clear PR intent.
   - Push a focused evidence-grounded fix to the PR branch when the correct repo change is clear.

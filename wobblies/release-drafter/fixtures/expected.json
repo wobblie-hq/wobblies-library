@@ -1,0 +1,11 @@
+{
+  "actions": [
+    {
+      "type": "create_pr",
+      "targetPattern": "^acme-corp/demo-repo$",
+      "contentMustMatch": ["release", "changelog"]
+    }
+  ],
+  "maxActions": 1,
+  "allowNoop": false
+}

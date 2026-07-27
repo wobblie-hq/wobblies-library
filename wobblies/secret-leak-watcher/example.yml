@@ -1,0 +1,38 @@
+id: secret-leak-watcher
+title: Secret Leak Watcher
+status: draft
+summary: Flags probable credentials in pull request diffs, masked, with an optional Slack alert.
+readiness: direct-copy
+showOnWebsite: true
+showInDashboard: true
+fit:
+  jobsToBeDone:
+    - review-with-confidence
+    - operate
+  bestFor:
+    - Teams without a commercial secret-scanning product on every repository.
+    - A review-time complement to push protection, catching what pattern lists miss.
+  notFor:
+    - Organizations already enforcing GitHub secret scanning with push protection on all repos.
+    - Repositories that intentionally vendor encrypted credential blobs.
+requirements:
+  requiredIntegrations:
+    - github
+  optionalIntegrations:
+    - slack
+  other: []
+adaptations:
+  - key: alert_channel
+    label: Alert channel
+    description: Slack channel for high-confidence leak alerts; empty disables Slack alerts.
+    required: false
+    default: ''
+  - key: allowed_paths
+    label: Allowed paths
+    description: Comma-separated globs where secret-like strings are expected and never flagged.
+    required: false
+    default: ''
+specializationIdeas:
+  - Add organization-specific key prefixes to the detection set.
+  - Escalate high-confidence production-key leaks to a security channel with an on-call mention.
+  - Pair with a rotation runbook link specific to each provider.

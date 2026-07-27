@@ -1,0 +1,12 @@
+{
+  "actions": [
+    {
+      "type": "comment",
+      "targetPattern": "^acme-corp/demo-repo#\\d+$",
+      "contentMustMatch": ["breaking", "migration"],
+      "contentMustNotMatch": ["no breaking"]
+    }
+  ],
+  "maxActions": 1,
+  "allowNoop": false
+}

@@ -1,0 +1,15 @@
+{
+  "type": "push",
+  "source": "github",
+  "payload": {
+    "repository": "acme-corp/demo-repo",
+    "ref": "refs/heads/main",
+    "head_sha": "def5678",
+    "pusher": "bob",
+    "conflicted_prs": []
+  },
+  "metadata": {
+    "deliveryId": "test-push-002",
+    "timestamp": "2026-01-15T11:05:00Z"
+  }
+}

@@ -1,7 +1,7 @@
 id: dockerfile-linter
 title: "Dockerfile Linter"
 status: ready
-summary: "Reviews Dockerfiles in PRs for best practice violations and security issues."
+summary: "Reviews pull request diffs that change Dockerfile or Docker Compose files for common best-practice violations, commenting with line-cited findings and remediation advice."
 readiness: direct-copy
 showOnWebsite: true
 showInDashboard: true
@@ -9,11 +9,22 @@ fit:
   jobsToBeDone:
     - maintain-and-modernize
   bestFor:
-    - Teams that want automated enforcement of this pattern.
+    - Teams deploying containerized services that want consistent Dockerfile quality.
+    - Repositories where Docker security and build efficiency are priorities.
   notFor:
-    - Teams that prefer manual review only.
+    - Repositories without Dockerfiles or container-based deployments.
+    - Teams that already run hadolint in CI and don't need PR-level comments.
 requirements:
   requiredIntegrations:
     - github
   optionalIntegrations: []
   other: []
+adaptations:
+  - key: lint_command
+    label: Lint command
+    description: Sandbox command to run for Dockerfile linting (e.g. `hadolint --format json`). When unset, the wobblie uses LLM analysis.
+    required: false
+    default: ""
+specializationIdeas:
+  - Set lint_command to hadolint for deterministic, rule-based findings.
+  - Extend scope to include docker-bake.hcl files if your project uses BuildKit bake.

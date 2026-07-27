@@ -1,0 +1,19 @@
+{
+  "type": "pull_request",
+  "action": "opened",
+  "source": "github",
+  "payload": {
+    "repository": "acme-corp/demo-repo",
+    "number": 52,
+    "title": "feat: add new payments module",
+    "head_branch": "feat/payments-module",
+    "base_branch": "main",
+    "draft": false,
+    "diff_files": ["src/payments/index.ts", "src/payments/stripe.ts", ".github/CODEOWNERS"],
+    "codeowners_content": "* @acme-corp/engineering\n/src/auth @acme-corp/security\n/src/payment @nonexistent-team"
+  },
+  "metadata": {
+    "deliveryId": "test-codeowner-001",
+    "timestamp": "2026-01-15T10:00:00Z"
+  }
+}

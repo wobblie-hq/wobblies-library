@@ -1,0 +1,19 @@
+{
+  "type": "pull_request",
+  "action": "opened",
+  "source": "github",
+  "payload": {
+    "repository": "acme-corp/demo-repo",
+    "number": 64,
+    "title": "fix: correct token refresh window",
+    "head_branch": "fix/token-refresh",
+    "base_branch": "main",
+    "draft": false,
+    "diff_files": ["src/auth/session.ts", "src/auth/refresh.ts"],
+    "available_labels": ["auth", "frontend", "docs", "ci"]
+  },
+  "metadata": {
+    "deliveryId": "test-path-labeler-001",
+    "timestamp": "2026-01-15T10:00:00Z"
+  }
+}

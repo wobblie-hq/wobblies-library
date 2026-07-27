@@ -28,7 +28,14 @@ export type JobToBeDone =
   | 'explain'
   | 'plan'
   | 'wobblie-operations';
-export type IntegrationSlug = 'github' | 'linear' | 'slack' | 'sentry';
+export type IntegrationSlug =
+  | 'github'
+  | 'linear'
+  | 'slack'
+  | 'sentry'
+  | 'jira'
+  | 'notion'
+  | 'vercel';
 
 export type ExampleAdaptation = {
   key: string;
@@ -77,7 +84,7 @@ export type CatalogExample = ExampleMetadata & {
 export type ExamplesCatalog = {
   schemaVersion: 2;
   source: {
-    repository: 'wobblie-hq/wobblies-library';
+    repository: 'wobblies-hq/wobblies-library';
     baseDirectory: 'wobblies';
   };
   examples: CatalogExample[];

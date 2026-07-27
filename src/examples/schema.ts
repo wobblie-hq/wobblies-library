@@ -101,7 +101,16 @@ const jobToBeDoneSchema = z.enum([
   'wobblie-operations',
 ]);
 
-const integrationSchema = z.enum(['github', 'linear', 'slack', 'sentry']);
+// Matches PLATFORM_CAPABILITIES.integrations and wobblie.ai's tool registry.
+const integrationSchema = z.enum([
+  'github',
+  'linear',
+  'slack',
+  'sentry',
+  'jira',
+  'notion',
+  'vercel',
+]);
 
 const exampleMetadataSchema = z
   .object({
@@ -282,7 +291,7 @@ const examplesCatalogSchema = z
     schemaVersion: z.literal(2),
     source: z
       .object({
-        repository: z.literal('wobblie-hq/wobblies-library'),
+        repository: z.literal('wobblies-hq/wobblies-library'),
         baseDirectory: z.literal('wobblies'),
       })
       .strict(),

@@ -11,7 +11,7 @@ integrations:
   - github
   - slack
 watch:
-  - "A Slack app or bot posts an alert-like monitoring, incident, error, or paging message in `{{adapt.slack_channel}}`."
+  - when a Slack message is posted
 routines:
   - Decide whether the Slack message is an alert-style monitoring or incident notification.
   - Research likely affected service context using the alert text, mapped repository, GitHub activity, and optional Linear or Sentry evidence.

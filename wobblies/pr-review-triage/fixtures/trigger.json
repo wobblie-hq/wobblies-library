@@ -1,0 +1,25 @@
+{
+  "type": "pull_request_review",
+  "action": "submitted",
+  "source": "github",
+  "payload": {
+    "repository": "acme-corp/demo-repo",
+    "pull_request": {
+      "number": 42,
+      "title": "feat: add user profile page",
+      "head_branch": "feat/user-profile",
+      "draft": false,
+      "state": "open"
+    },
+    "review": {
+      "author": "bot-reviewer",
+      "author_type": "Bot",
+      "state": "CHANGES_REQUESTED",
+      "body": "Found unused import in src/profile.ts line 5"
+    }
+  },
+  "metadata": {
+    "deliveryId": "test-review-001",
+    "timestamp": "2026-01-15T11:00:00Z"
+  }
+}

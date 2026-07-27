@@ -1,7 +1,7 @@
 id: env-var-documenter
 title: "Env Var Documenter"
 status: ready
-summary: "Ensures all environment variables referenced in code are documented in the README or .env.example."
+summary: "Comments on pull requests that introduce new environment variable references without documenting them in the project's environment documentation file."
 readiness: direct-copy
 showOnWebsite: true
 showInDashboard: true
@@ -9,11 +9,22 @@ fit:
   jobsToBeDone:
     - maintain-and-modernize
   bestFor:
-    - Teams that want automated enforcement of this pattern.
+    - Teams that want to keep environment variable documentation in sync with code.
+    - Repositories where missing environment variables cause deployment failures.
   notFor:
-    - Teams that prefer manual review only.
+    - Teams that manage environment variables entirely through infrastructure-as-code tools.
+    - Repositories with no .env.example or equivalent documentation file.
 requirements:
   requiredIntegrations:
     - github
   optionalIntegrations: []
   other: []
+adaptations:
+  - key: env_docs_path
+    label: Environment docs path
+    description: Path to the file that documents environment variables (e.g. `.env.example`, `docs/env-vars.md`).
+    required: false
+    default: ".env.example"
+specializationIdeas:
+  - Point env_docs_path to your team's environment variable documentation file.
+  - Extend detection patterns for additional languages or frameworks.

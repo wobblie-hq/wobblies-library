@@ -1,19 +1,29 @@
 id: migration-reviewer
 title: "Migration Reviewer"
 status: ready
-summary: "Reviews database migration files for safety issues like missing rollbacks or locking operations."
-readiness: direct-copy
+summary: "Reviews pull request diffs that change database migration files for safety issues — irreversible operations, lock-risk DDL, destructive changes without backfill, and mixed schema-data migrations — and comments with severity-rated findings."
+readiness: adapt-before-use
 showOnWebsite: true
 showInDashboard: true
 fit:
   jobsToBeDone:
     - maintain-and-modernize
   bestFor:
-    - Teams that want automated enforcement of this pattern.
+    - Teams deploying schema changes to production databases where downtime is costly.
+    - Repositories with frequent migration PRs where safety review is inconsistent.
   notFor:
-    - Teams that prefer manual review only.
+    - Projects without a database or without migration files.
+    - Teams with a dedicated DBA who manually reviews every migration.
 requirements:
   requiredIntegrations:
     - github
   optionalIntegrations: []
   other: []
+adaptations:
+  - key: migration_globs
+    label: Migration file globs
+    description: Glob patterns identifying database migration files in the repository.
+    required: true
+specializationIdeas:
+  - Set migration_globs to match your framework's migration directory (e.g. `db/migrate/**/*.rb` for Rails).
+  - Extend to include Flyway or Liquibase changelog formats.

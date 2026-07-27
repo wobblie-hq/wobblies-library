@@ -1,7 +1,7 @@
 id: codeowner-validator
 title: "CODEOWNERS Validator"
 status: ready
-summary: "Validates CODEOWNERS file is complete and flags new directories without ownership."
+summary: "Comments on pull requests that introduce paths without CODEOWNERS coverage or modify CODEOWNERS with syntax errors, helping teams maintain complete code ownership."
 readiness: direct-copy
 showOnWebsite: true
 showInDashboard: true
@@ -9,11 +9,22 @@ fit:
   jobsToBeDone:
     - maintain-and-modernize
   bestFor:
-    - Teams that want automated enforcement of this pattern.
+    - Teams that use CODEOWNERS to enforce review assignments and want coverage gaps caught early.
+    - Repositories with strict ownership policies across directories.
   notFor:
-    - Teams that prefer manual review only.
+    - Teams that do not use a CODEOWNERS file.
+    - Small repositories where a single team owns everything.
 requirements:
   requiredIntegrations:
     - github
   optionalIntegrations: []
   other: []
+adaptations:
+  - key: codeowners_path
+    label: CODEOWNERS file path
+    description: Path to the CODEOWNERS file in the repository.
+    required: false
+    default: ".github/CODEOWNERS"
+specializationIdeas:
+  - Adjust the CODEOWNERS path if your repository uses a non-standard location.
+  - Combine with branch protection rules that require CODEOWNERS review approval.

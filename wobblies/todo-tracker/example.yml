@@ -1,7 +1,7 @@
 id: todo-tracker
 title: "TODO Tracker"
 status: ready
-summary: "Finds TODO and FIXME comments in code and creates linked issues for tracking."
+summary: "Comments on pull requests that introduce new TODO or FIXME comments in the diff, helping teams track and resolve technical debt."
 readiness: direct-copy
 showOnWebsite: true
 showInDashboard: true
@@ -9,11 +9,22 @@ fit:
   jobsToBeDone:
     - maintain-and-modernize
   bestFor:
-    - Teams that want automated enforcement of this pattern.
+    - Teams that want visibility into new technical debt introduced in pull requests.
+    - Repositories where TODOs should be tracked as issues to ensure follow-up.
   notFor:
-    - Teams that prefer manual review only.
+    - Teams that intentionally use TODOs as lightweight reminders without tracking.
+    - Repositories with a large existing TODO backlog that would generate noise.
 requirements:
   requiredIntegrations:
     - github
   optionalIntegrations: []
   other: []
+adaptations:
+  - key: auto_create_issues
+    label: Auto-create issues
+    description: When set to `true`, automatically create a GitHub issue for each new TODO and link it in the comment.
+    required: false
+    default: "false"
+specializationIdeas:
+  - Enable auto_create_issues to automatically track TODOs as GitHub issues.
+  - Customize to detect additional comment markers beyond TODO and FIXME.

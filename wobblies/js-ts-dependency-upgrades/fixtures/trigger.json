@@ -1,0 +1,16 @@
+{
+  "type": "schedule",
+  "source": "schedule",
+  "payload": {
+    "repository": "acme-corp/demo-repo",
+    "schedule": "0 8 * * 1",
+    "outdated_packages": [
+      { "name": "lodash", "current": "4.17.20", "latest": "4.17.21", "type": "runtime" },
+      { "name": "typescript", "current": "5.3.0", "latest": "5.4.2", "type": "dev" }
+    ]
+  },
+  "metadata": {
+    "deliveryId": "test-schedule-007",
+    "timestamp": "2026-01-13T08:00:00Z"
+  }
+}

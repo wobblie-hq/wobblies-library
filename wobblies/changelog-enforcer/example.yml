@@ -1,19 +1,39 @@
 id: changelog-enforcer
 title: "Changelog Enforcer"
 status: ready
-summary: "Requires a CHANGELOG entry for every pull request that changes application code."
-readiness: direct-copy
+summary: "Comments on pull requests that change application code without updating the changelog, helping teams maintain accurate release documentation."
+readiness: adapt-before-use
 showOnWebsite: true
 showInDashboard: true
 fit:
   jobsToBeDone:
     - maintain-and-modernize
   bestFor:
-    - Teams that want automated enforcement of this pattern.
+    - Teams that maintain a changelog and want every source change documented.
+    - Repositories where release notes are generated from CHANGELOG.md.
   notFor:
-    - Teams that prefer manual review only.
+    - Teams that do not maintain a changelog.
+    - Repositories where release notes are auto-generated from commit messages.
 requirements:
   requiredIntegrations:
     - github
   optionalIntegrations: []
   other: []
+adaptations:
+  - key: changelog_path
+    label: Changelog file path
+    description: Path to the changelog file that must be updated when source files change.
+    required: false
+    default: "CHANGELOG.md"
+  - key: source_globs
+    label: Source file globs
+    description: Comma-separated glob patterns for files that require a changelog entry when changed.
+    required: true
+  - key: skip_label
+    label: Skip label
+    description: Pull request label that bypasses the changelog check.
+    required: false
+    default: "no-changelog"
+specializationIdeas:
+  - Adjust source_globs to match your project's source directory layout.
+  - Change the skip label to match your team's labeling convention.

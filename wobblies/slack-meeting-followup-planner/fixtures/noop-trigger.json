@@ -1,0 +1,17 @@
+{
+  "type": "message",
+  "action": "posted",
+  "source": "slack",
+  "payload": {
+    "channel": "C0123TEAM",
+    "thread_ts": "1705313100.000400",
+    "author_type": "user",
+    "author_name": "bob",
+    "text": "Great standup today! Have a good weekend everyone.",
+    "repository": "acme-corp/demo-repo"
+  },
+  "metadata": {
+    "deliveryId": "test-slack-004",
+    "timestamp": "2026-01-15T14:05:00Z"
+  }
+}

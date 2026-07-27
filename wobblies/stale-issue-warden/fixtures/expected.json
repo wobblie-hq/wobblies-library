@@ -1,0 +1,17 @@
+{
+  "actions": [
+    {
+      "type": "comment",
+      "targetPattern": "^acme-corp/demo-repo#\\d+$",
+      "contentMustMatch": ["[Ss]tale"]
+    },
+    {
+      "type": "label",
+      "targetPattern": "^acme-corp/demo-repo#\\d+$",
+      "contentMustMatch": ["stale"]
+    }
+  ],
+  "maxActions": 2,
+  "allowNoop": true,
+  "noopReason": "No action when no issue has been inactive beyond the configured threshold"
+}

@@ -15,11 +15,11 @@ import type {
 } from './types';
 import { machineError, normalizeThrownMessage } from './validation';
 
-const SOURCE_REPOSITORY = 'wobblie-hq/wobblies-library';
+const SOURCE_REPOSITORY = 'wobblies-hq/wobblies-library';
 const SOURCE_BASE_DIRECTORY = 'wobblies';
-const DEFAULT_PUBLICATION_REF = 'master';
+const DEFAULT_PUBLICATION_REF = 'main';
 const ROOT_CATALOG_PATH = 'examples.json';
-const ALLOWED_WOBBLIE_PACKAGE_ENTRIES = new Set(['WOBBLIE.md', 'example.yml', 'scripts', 'references']);
+const ALLOWED_WOBBLIE_PACKAGE_ENTRIES = new Set(['WOBBLIE.md', 'example.yml', 'scripts', 'references', 'fixtures']);
 const MUSTACHE_TOKEN_PATTERN = /{{\s*([^{}]*?)\s*}}/g;
 const ADAPTATION_EXPRESSION_PREFIX_PATTERN = /^adapt(?:$|[.\s])/;
 const ADAPTATION_TOKEN_EXPRESSION_PATTERN = /^adapt\.([a-z][a-z0-9_]*)$/;

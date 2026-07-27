@@ -1,0 +1,16 @@
+{
+  "type": "schedule",
+  "source": "schedule",
+  "payload": {
+    "repository": "acme-corp/demo-repo",
+    "schedule": "0 6 * * 1",
+    "recent_workflow_runs": [
+      {"id": 1004, "name": "CI", "conclusion": "success", "head_sha": "def456"},
+      {"id": 1005, "name": "CI", "conclusion": "success", "head_sha": "ghi789"}
+    ]
+  },
+  "metadata": {
+    "deliveryId": "test-flaky-002",
+    "timestamp": "2026-01-13T06:00:00Z"
+  }
+}

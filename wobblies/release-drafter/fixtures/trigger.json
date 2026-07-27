@@ -1,0 +1,19 @@
+{
+  "type": "pull_request",
+  "action": "closed",
+  "source": "github",
+  "payload": {
+    "repository": "acme-corp/demo-repo",
+    "number": 66,
+    "title": "feat: add search functionality",
+    "head_branch": "feat/search",
+    "base_branch": "main",
+    "merged": true,
+    "labels": ["feature"],
+    "merged_by": "alice"
+  },
+  "metadata": {
+    "deliveryId": "test-release-001",
+    "timestamp": "2026-01-15T10:00:00Z"
+  }
+}

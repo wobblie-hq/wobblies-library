@@ -7,7 +7,7 @@ watch:
 routines:
   - Check out the pull request head, install dependencies, and run `{{adapt.test_command}}` in the sandbox.
   - Summarize the result as a single pass or fail outcome with a short tail of any failing output.
-  - Post one comment with the outcome, updating or replacing the prior comment on later runs instead of stacking new ones.
+  - Post one comment with the pull request's pass or fail test result, updating or replacing the prior comment on later runs instead of stacking new ones.
 deny:
   - Do not modify source code, tests, or configuration.
   - Do not open pull requests, approve, merge, request changes, or submit reviews.

@@ -1,0 +1,32 @@
+{
+  "type": "schedule",
+  "source": "schedule",
+  "payload": {
+    "repository": "acme-corp/demo-repo",
+    "schedule": "0 15 * * 1-5",
+    "activity": [
+      {
+        "type": "pull_request_merged",
+        "number": 42,
+        "title": "feat: add user profile page",
+        "merged_by": "alice"
+      },
+      {
+        "type": "pull_request_opened",
+        "number": 43,
+        "title": "fix: resolve login redirect loop",
+        "author": "bob"
+      },
+      {
+        "type": "ci_failure",
+        "check_name": "build",
+        "branch": "main",
+        "consecutive_failures": 3
+      }
+    ]
+  },
+  "metadata": {
+    "deliveryId": "test-schedule-005",
+    "timestamp": "2026-01-15T15:00:00Z"
+  }
+}

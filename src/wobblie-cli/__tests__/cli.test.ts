@@ -63,7 +63,7 @@ Optional: {{ adapt.optional_value }}
 const catalog: ExamplesCatalog = {
   schemaVersion: 2,
   source: {
-    repository: 'wobblie-hq/wobblies-library',
+    repository: 'wobblies-hq/wobblies-library',
     baseDirectory: 'wobblies',
   },
   examples: [
@@ -95,7 +95,7 @@ const catalog: ExamplesCatalog = {
       references: ['references/guide.md'],
       source: {
         directory: 'wobblies/ready-wobblie',
-        url: 'https://github.com/wobblie-hq/wobblies-library/tree/master/wobblies/ready-wobblie',
+        url: 'https://github.com/wobblies-hq/wobblies-library/tree/main/wobblies/ready-wobblie',
       },
     },
     {
@@ -126,7 +126,7 @@ const catalog: ExamplesCatalog = {
       references: [],
       source: {
         directory: 'wobblies/deprecated-wobblie',
-        url: 'https://github.com/wobblie-hq/wobblies-library/tree/master/wobblies/deprecated-wobblie',
+        url: 'https://github.com/wobblies-hq/wobblies-library/tree/main/wobblies/deprecated-wobblie',
       },
     },
     {
@@ -173,7 +173,7 @@ const catalog: ExamplesCatalog = {
       references: ['references/render.md'],
       source: {
         directory: 'wobblies/templated-wobblie',
-        url: 'https://github.com/wobblie-hq/wobblies-library/tree/master/wobblies/templated-wobblie',
+        url: 'https://github.com/wobblies-hq/wobblies-library/tree/main/wobblies/templated-wobblie',
       },
     },
   ],
@@ -186,12 +186,12 @@ function memoryCatalogClient(
   const files = new Map<string, string>([
     ['test-ref:wobblies/ready-wobblie/scripts/run.sh', '#!/usr/bin/env bash\necho ready\n'],
     ['test-ref:wobblies/ready-wobblie/references/guide.md', '# Guide\n\nAdapt me.\n'],
-    ['master:wobblies/ready-wobblie/scripts/run.sh', '#!/usr/bin/env bash\necho ready\n'],
-    ['master:wobblies/ready-wobblie/references/guide.md', '# Guide\n\nAdapt me.\n'],
+    ['main:wobblies/ready-wobblie/scripts/run.sh', '#!/usr/bin/env bash\necho ready\n'],
+    ['main:wobblies/ready-wobblie/references/guide.md', '# Guide\n\nAdapt me.\n'],
     ['test-ref:wobblies/templated-wobblie/scripts/render.sh', '#!/usr/bin/env bash\necho {{adapt.required_value}} {{adapt.optional_value}}\n'],
     ['test-ref:wobblies/templated-wobblie/references/render.md', '# Rendered\n\nTarget: {{ adapt.required_value }}\nOptional: {{adapt.optional_value}}\n'],
-    ['master:wobblies/templated-wobblie/scripts/render.sh', '#!/usr/bin/env bash\necho {{adapt.required_value}} {{adapt.optional_value}}\n'],
-    ['master:wobblies/templated-wobblie/references/render.md', '# Rendered\n\nTarget: {{ adapt.required_value }}\nOptional: {{adapt.optional_value}}\n'],
+    ['main:wobblies/templated-wobblie/scripts/render.sh', '#!/usr/bin/env bash\necho {{adapt.required_value}} {{adapt.optional_value}}\n'],
+    ['main:wobblies/templated-wobblie/references/render.md', '# Rendered\n\nTarget: {{ adapt.required_value }}\nOptional: {{adapt.optional_value}}\n'],
   ]);
   for (const [key, value] of Object.entries(overrides)) {
     if (value !== undefined) {
@@ -624,7 +624,7 @@ describe('wobblie CLI catalog commands', () => {
         references: ['other/guide.md'],
         source: {
           directory: 'wobblies/other-wobblie',
-          url: 'https://github.com/wobblie-hq/wobblies-library/tree/master/wobblies/other-wobblie',
+          url: 'https://github.com/wobblies-hq/wobblies-library/tree/main/wobblies/other-wobblie',
         },
       };
 

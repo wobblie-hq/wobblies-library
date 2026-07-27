@@ -1,0 +1,13 @@
+{
+  "type": "schedule",
+  "source": "schedule",
+  "payload": {
+    "repository": "acme-corp/demo-repo",
+    "schedule": "0 10 * * 1",
+    "docs_files": []
+  },
+  "metadata": {
+    "deliveryId": "test-schedule-004",
+    "timestamp": "2026-01-13T10:00:00Z"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "type": "issue",
+  "action": "created",
+  "source": "linear",
+  "payload": {
+    "issue_id": "ENG-1241",
+    "title": "Implement new onboarding flow for enterprise customers",
+    "description": "Design and build a multi-step onboarding wizard for enterprise tier.",
+    "labels": ["Feature"],
+    "team": "Engineering",
+    "state": "backlog",
+    "repository": "acme-corp/demo-repo"
+  },
+  "metadata": {
+    "deliveryId": "test-linear-004",
+    "timestamp": "2026-01-15T11:05:00Z"
+  }
+}

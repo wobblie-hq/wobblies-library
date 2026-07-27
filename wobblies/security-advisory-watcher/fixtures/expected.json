@@ -1,0 +1,11 @@
+{
+  "actions": [
+    {
+      "type": "create_issue",
+      "targetPattern": "^acme-corp/demo-repo$",
+      "contentMustMatch": ["vulnerability", "severity"]
+    }
+  ],
+  "maxActions": 5,
+  "allowNoop": false
+}

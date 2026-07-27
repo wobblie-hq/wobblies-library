@@ -11,8 +11,8 @@ integrations:
   - github
   - slack
 watch:
-  - "A Slack message is posted in `{{adapt.slack_channel}}` with meeting notes, a meeting transcript, an accessible transcript link, or an uploaded note file."
-  - "A Slack thread reply is posted in `{{adapt.slack_channel}}` with meeting notes, a meeting transcript, an accessible transcript link, or an uploaded note file."
+  - when a Slack message is posted
+  - when a Slack thread reply is posted
 routines:
   - Detect meeting transcripts, meeting notes, call notes, recording notes, transcript links, or uploaded note files in the Slack message or thread reply.
   - Read the available notes and cross-reference GitHub, Linear, and repository context to identify concrete follow-up options.

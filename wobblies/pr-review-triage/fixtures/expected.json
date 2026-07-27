@@ -1,0 +1,10 @@
+{
+  "actions": [
+    {
+      "type": "comment",
+      "targetPattern": "^acme-corp/demo-repo#\\d+$"
+    }
+  ],
+  "maxActions": 5,
+  "allowNoop": false
+}

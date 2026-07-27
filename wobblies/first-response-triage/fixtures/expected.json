@@ -1,0 +1,16 @@
+{
+  "actions": [
+    {
+      "type": "label",
+      "targetPattern": "^acme-corp/demo-repo#\\d+$",
+      "contentMustMatch": ["bug"]
+    },
+    {
+      "type": "comment",
+      "targetPattern": "^acme-corp/demo-repo#\\d+$",
+      "contentMustMatch": ["[Rr]eproduc"]
+    }
+  ],
+  "maxActions": 2,
+  "allowNoop": false
+}

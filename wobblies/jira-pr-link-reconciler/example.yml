@@ -1,0 +1,27 @@
+id: jira-pr-link-reconciler
+title: Jira PR Link Reconciler
+status: draft
+summary: Suggests likely GitHub pull request links for Jira issues that mention unlinked code work.
+readiness: direct-copy
+showOnWebsite: true
+showInDashboard: true
+fit:
+  jobsToBeDone:
+    - organize
+  bestFor:
+    - Teams whose Jira-GitHub linkage depends on developers remembering issue keys.
+    - Projects where unlinked work breaks sprint reporting.
+  notFor:
+    - Teams with strict smart-commit discipline where links never go missing.
+    - Projects spanning many repositories with no primary mapping.
+requirements:
+  requiredIntegrations:
+    - jira
+    - github
+  optionalIntegrations: []
+  other:
+    - Jira project mapped to this repository.
+specializationIdeas:
+  - Also watch pull request events to suggest the reverse link on GitHub-side gaps.
+  - Weight branches matching the team's naming convention when one exists.
+  - Summarize unlinked-work candidates weekly instead of per-event for busy projects.

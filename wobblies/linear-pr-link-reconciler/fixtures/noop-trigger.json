@@ -1,0 +1,17 @@
+{
+  "type": "issue",
+  "action": "created",
+  "source": "linear",
+  "payload": {
+    "issue_id": "ENG-1261",
+    "title": "Plan Q2 roadmap review",
+    "description": "Schedule a meeting to review Q2 priorities.",
+    "labels": ["Planning"],
+    "team": "Engineering",
+    "repository": "acme-corp/demo-repo"
+  },
+  "metadata": {
+    "deliveryId": "test-linear-006",
+    "timestamp": "2026-01-15T14:05:00Z"
+  }
+}

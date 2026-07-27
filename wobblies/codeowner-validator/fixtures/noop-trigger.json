@@ -1,0 +1,18 @@
+{
+  "type": "pull_request",
+  "action": "opened",
+  "source": "github",
+  "payload": {
+    "repository": "acme-corp/demo-repo",
+    "number": 53,
+    "title": "fix: typo in auth module",
+    "head_branch": "fix/auth-typo",
+    "base_branch": "main",
+    "draft": false,
+    "diff_files": ["src/auth/login.ts"]
+  },
+  "metadata": {
+    "deliveryId": "test-codeowner-002",
+    "timestamp": "2026-01-15T10:05:00Z"
+  }
+}

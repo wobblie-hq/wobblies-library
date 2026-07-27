@@ -5,8 +5,8 @@ integrations:
   - github
   - linear
 watch:
-  - A Linear issue is created mentioning active GitHub code work or missing pull request linkage.
-  - A Linear issue comment is added mentioning active GitHub code work or missing pull request linkage.
+  - when a Linear issue is created
+  - when a Linear issue comment is added
 routines:
   - Decide whether the triggering issue or comment mentions active code work that may belong to GitHub.
   - Search likely related GitHub pull requests, branches, and commits using issue identity, explicit URLs, title terms, and branch names.

@@ -1,0 +1,17 @@
+{
+  "type": "issue",
+  "action": "created",
+  "source": "linear",
+  "payload": {
+    "issue_id": "ENG-1235",
+    "title": "Add dark mode support to settings page",
+    "description": "We should support dark mode in the settings UI.",
+    "labels": ["Feature"],
+    "team": "Engineering",
+    "repository": "acme-corp/demo-repo"
+  },
+  "metadata": {
+    "deliveryId": "test-linear-002",
+    "timestamp": "2026-01-15T09:35:00Z"
+  }
+}

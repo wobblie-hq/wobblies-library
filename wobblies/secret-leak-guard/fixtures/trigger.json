@@ -1,0 +1,19 @@
+{
+  "type": "pull_request",
+  "action": "opened",
+  "source": "github",
+  "payload": {
+    "repository": "acme-corp/demo-repo",
+    "number": 83,
+    "title": "chore: add deploy script",
+    "head_branch": "chore/deploy-script",
+    "base_branch": "main",
+    "draft": false,
+    "diff_files": ["scripts/deploy.sh"],
+    "diff_summary": "+ AWS_SECRET_ACCESS_KEY=wJalrXUtnFEMIK7MDENGbPxRfiCYEXAMPLEKEY"
+  },
+  "metadata": {
+    "deliveryId": "test-secret-leak-guard-001",
+    "timestamp": "2026-01-15T10:00:00Z"
+  }
+}

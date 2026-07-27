@@ -1,0 +1,20 @@
+{
+  "type": "pull_request",
+  "action": "opened",
+  "source": "github",
+  "payload": {
+    "repository": "acme-corp/demo-repo",
+    "number": 42,
+    "title": "Add user profile page",
+    "head_branch": "feat/ENG-123-user-profile",
+    "base_branch": "main",
+    "body": "",
+    "draft": false,
+    "state": "open",
+    "linked_issues": []
+  },
+  "metadata": {
+    "deliveryId": "test-pr-001",
+    "timestamp": "2026-01-15T10:00:00Z"
+  }
+}

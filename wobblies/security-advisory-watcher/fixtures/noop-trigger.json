@@ -1,0 +1,13 @@
+{
+  "type": "schedule",
+  "source": "schedule",
+  "payload": {
+    "repository": "acme-corp/demo-repo",
+    "schedule": "0 7 * * 1-5",
+    "audit_results": []
+  },
+  "metadata": {
+    "deliveryId": "test-security-002",
+    "timestamp": "2026-01-15T07:00:00Z"
+  }
+}

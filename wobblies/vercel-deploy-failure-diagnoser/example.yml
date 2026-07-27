@@ -1,0 +1,27 @@
+id: vercel-deploy-failure-diagnoser
+title: Vercel Deploy Failure Diagnoser
+status: draft
+summary: Diagnoses failed Vercel deployments and posts the probable cause and fix on the pull request.
+readiness: direct-copy
+showOnWebsite: true
+showInDashboard: true
+fit:
+  jobsToBeDone:
+    - operate
+  bestFor:
+    - Teams deploying every pull request to Vercel previews.
+    - Repositories where deploy failures otherwise sit unread in the Vercel dashboard.
+  notFor:
+    - Projects not deployed on Vercel.
+    - Deployments triggered outside pull requests with no commit linkage.
+requirements:
+  requiredIntegrations:
+    - vercel
+    - github
+  optionalIntegrations: []
+  other:
+    - Vercel project linked to this repository with readable build logs.
+specializationIdeas:
+  - Alert a Slack channel when a production deployment fails.
+  - Add framework-specific fix suggestions for the team's stack.
+  - Track repeat env-var failures and suggest updating the env documentation.

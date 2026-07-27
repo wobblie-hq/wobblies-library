@@ -1,0 +1,11 @@
+{
+  "actions": [
+    {
+      "type": "create_issue",
+      "targetPattern": "^acme-corp/demo-repo$",
+      "contentMustMatch": ["flaky", "test"]
+    }
+  ],
+  "maxActions": 3,
+  "allowNoop": false
+}

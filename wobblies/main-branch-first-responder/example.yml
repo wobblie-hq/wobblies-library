@@ -1,0 +1,39 @@
+id: main-branch-first-responder
+title: Main Branch First Responder
+status: draft
+summary: Alerts the team fast, with a classified cause and suspect PR, when CI fails on the default branch.
+readiness: adapt-before-use
+showOnWebsite: true
+showInDashboard: true
+fit:
+  jobsToBeDone:
+    - operate
+  bestFor:
+    - Teams where a red default branch blocks everyone and needs immediate, triaged attention.
+    - Repositories with enough CI signal to distinguish regressions from flakes.
+  notFor:
+    - Repositories without CI on the default branch.
+    - Teams that already run a paging/incident tool wired to CI failures.
+requirements:
+  requiredIntegrations:
+    - github
+    - slack
+  optionalIntegrations: []
+  other:
+    - A configured Slack channel for build alerts.
+adaptations:
+  - key: slack_channel
+    label: Slack channel
+    description: Slack channel where build failure alerts are posted.
+    required: true
+    suggestions:
+      - '#build-alerts'
+  - key: blocking_workflows
+    label: Blocking workflows
+    description: Comma-separated workflow names treated as blocking; empty means all workflows.
+    required: false
+    default: ''
+specializationIdeas:
+  - Escalate to a second channel when the default branch stays red for more than an hour.
+  - Add a quiet-hours window for scheduled non-critical workflows.
+  - Track repeat flaky tests and hand them to a flaky-test wobblie.

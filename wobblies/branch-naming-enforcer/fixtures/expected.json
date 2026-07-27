@@ -1,0 +1,12 @@
+{
+  "actions": [
+    {
+      "type": "comment",
+      "targetPattern": "^acme-corp/demo-repo#\\d+$",
+      "contentMustMatch": ["branch", "naming"],
+      "contentMustNotMatch": ["approved"]
+    }
+  ],
+  "maxActions": 1,
+  "allowNoop": false
+}

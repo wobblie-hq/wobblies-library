@@ -1,0 +1,6 @@
+{
+  "actions": [],
+  "maxActions": 0,
+  "allowNoop": true,
+  "noopReason": "Changed paths are covered by existing CODEOWNERS rules; no new or moved paths without coverage"
+}

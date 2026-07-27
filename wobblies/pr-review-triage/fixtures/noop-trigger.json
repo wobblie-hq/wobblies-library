@@ -1,0 +1,25 @@
+{
+  "type": "pull_request_review",
+  "action": "submitted",
+  "source": "github",
+  "payload": {
+    "repository": "acme-corp/demo-repo",
+    "pull_request": {
+      "number": 42,
+      "title": "feat: add user profile page",
+      "head_branch": "feat/user-profile",
+      "draft": true,
+      "state": "open"
+    },
+    "review": {
+      "author": "alice",
+      "author_type": "User",
+      "state": "APPROVED",
+      "body": "LGTM"
+    }
+  },
+  "metadata": {
+    "deliveryId": "test-review-002",
+    "timestamp": "2026-01-15T11:05:00Z"
+  }
+}

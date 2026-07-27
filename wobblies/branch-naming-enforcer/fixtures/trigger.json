@@ -1,0 +1,17 @@
+{
+  "type": "pull_request",
+  "action": "opened",
+  "source": "github",
+  "payload": {
+    "repository": "acme-corp/demo-repo",
+    "number": 46,
+    "title": "Add new feature",
+    "head_branch": "my_branch",
+    "base_branch": "main",
+    "draft": false
+  },
+  "metadata": {
+    "deliveryId": "test-branch-001",
+    "timestamp": "2026-01-15T10:00:00Z"
+  }
+}

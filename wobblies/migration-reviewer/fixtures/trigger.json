@@ -1,0 +1,19 @@
+{
+  "type": "pull_request",
+  "action": "opened",
+  "source": "github",
+  "payload": {
+    "repository": "acme-corp/demo-repo",
+    "number": 62,
+    "title": "feat: add user preferences table",
+    "head_branch": "feat/user-prefs",
+    "base_branch": "main",
+    "draft": false,
+    "diff_files": ["db/migrations/20260115_add_user_preferences.sql"],
+    "diff_summary": "DROP COLUMN email FROM users; ALTER TABLE users ADD COLUMN preferences JSONB;"
+  },
+  "metadata": {
+    "deliveryId": "test-migration-001",
+    "timestamp": "2026-01-15T10:00:00Z"
+  }
+}

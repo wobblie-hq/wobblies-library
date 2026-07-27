@@ -1,7 +1,7 @@
 id: test-coverage-gate
 title: "Test Coverage Gate"
 status: ready
-summary: "Blocks PRs that reduce overall test coverage below the configured threshold."
+summary: "Comments on pull requests when test coverage drops more than the configured threshold, surfacing regressions before merge."
 readiness: direct-copy
 showOnWebsite: true
 showInDashboard: true
@@ -9,11 +9,33 @@ fit:
   jobsToBeDone:
     - maintain-and-modernize
   bestFor:
-    - Teams that want automated enforcement of this pattern.
+    - Teams that want a lightweight, comment-only coverage regression signal on pull requests.
+    - Repositories that run tests with coverage output available in CI or via sandbox.
   notFor:
-    - Teams that prefer manual review only.
+    - Teams that require coverage gates to block merges (this wobblie comments only, never blocks).
+    - Repositories without a test coverage tool or where coverage cannot be produced by a shell command.
 requirements:
   requiredIntegrations:
     - github
   optionalIntegrations: []
-  other: []
+  other:
+    - A test coverage tool accessible via sandbox command or CI artifact.
+adaptations:
+  - key: coverage_command
+    label: Coverage command
+    description: Shell command to run tests and output a coverage report. Used when CI coverage artifacts are unavailable.
+    required: false
+    default: "pnpm test --coverage --reporter=json"
+  - key: min_coverage_pct
+    label: Minimum coverage percentage
+    description: Absolute minimum coverage percentage. A comment is posted if coverage falls below this threshold.
+    required: false
+    default: "80"
+  - key: max_drop_pct
+    label: Maximum allowed coverage drop
+    description: Maximum allowed drop in coverage percentage points from base to PR branch before a comment is posted.
+    required: false
+    default: "2"
+specializationIdeas:
+  - Lower max_drop_pct to 0 to flag any regression, or raise it to 5 for more permissive teams.
+  - Specialize the coverage command for specific package manager or test runner setups.

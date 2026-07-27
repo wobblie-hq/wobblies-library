@@ -1,7 +1,7 @@
 id: error-handling-reviewer
 title: "Error Handling Reviewer"
 status: ready
-summary: "Reviews PRs for missing error handling patterns like uncaught promises or empty catch blocks."
+summary: "Reviews pull request diffs for missing or inadequate error handling in code paths that add I/O, network, or async calls, commenting with high-confidence findings anchored to changed lines."
 readiness: direct-copy
 showOnWebsite: true
 showInDashboard: true
@@ -9,11 +9,22 @@ fit:
   jobsToBeDone:
     - maintain-and-modernize
   bestFor:
-    - Teams that want automated enforcement of this pattern.
+    - Teams where runtime errors from missing error handling cause production incidents.
+    - Repositories with heavy I/O, network, or async code where error paths are easy to miss in review.
   notFor:
-    - Teams that prefer manual review only.
+    - Repositories with comprehensive error-handling lint rules already enforced in CI.
+    - Teams that intentionally use crash-only error handling patterns.
 requirements:
   requiredIntegrations:
     - github
   optionalIntegrations: []
   other: []
+adaptations:
+  - key: code_globs
+    label: Code file globs
+    description: Glob pattern for code files to analyze. Default covers common languages with I/O patterns.
+    required: false
+    default: "**/*.{ts,js,tsx,jsx,py,go,rs,java,rb}"
+specializationIdeas:
+  - Narrow code_globs to your source directory for faster, focused analysis.
+  - Extend to include .kt or .swift files for mobile projects.

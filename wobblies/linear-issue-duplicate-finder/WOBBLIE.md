@@ -5,7 +5,7 @@ integrations:
   - github
   - linear
 watch:
-  - A Linear issue is created with enough title, description, label, project, or linked GitHub context to search for likely duplicates.
+  - when a Linear issue is created
 routines:
   - Skip the new issue when it is already completed, canceled, or otherwise inactive.
   - Search likely duplicate or related Linear issues, checking the same Linear team before broader mapped repository context.

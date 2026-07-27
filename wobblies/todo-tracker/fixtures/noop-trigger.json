@@ -1,0 +1,19 @@
+{
+  "type": "pull_request",
+  "action": "opened",
+  "source": "github",
+  "payload": {
+    "repository": "acme-corp/demo-repo",
+    "number": 71,
+    "title": "refactor: clean up utils",
+    "head_branch": "refactor/utils",
+    "base_branch": "main",
+    "draft": false,
+    "diff_files": ["src/utils/format.ts"],
+    "new_todos": []
+  },
+  "metadata": {
+    "deliveryId": "test-todo-002",
+    "timestamp": "2026-01-15T10:05:00Z"
+  }
+}

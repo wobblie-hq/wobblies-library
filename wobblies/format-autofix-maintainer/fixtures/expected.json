@@ -1,0 +1,12 @@
+{
+  "actions": [
+    {
+      "type": "create_pr",
+      "targetPattern": "^acme-corp/demo-repo$",
+      "contentMustMatch": ["[Ff]ormat"]
+    }
+  ],
+  "maxActions": 1,
+  "allowNoop": true,
+  "noopReason": "No pull request is opened when the working tree is already clean after formatting"
+}

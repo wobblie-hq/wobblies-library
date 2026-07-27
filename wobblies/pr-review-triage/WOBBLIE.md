@@ -4,14 +4,14 @@ purpose: Keep non-draft pull request feedback focused on merge-readiness by asse
 integrations:
   - github
 watch:
-  - A GitHub pull request review is submitted on an open non-draft pull request.
-  - A top-level GitHub PR comment is created on an open non-draft pull request.
-  - A GitHub pull request head commit changes on an open non-draft pull request.
+  - when a pull request review is submitted
+  - when a pull request comment is created
+  - when a pull request is synchronized
 routines:
   - Bootstrap PR review, issue-comment, thread, and pagination context via `bun .agents/wobblies/pr-review-triage/scripts/bootstrap-data.ts --pr <number>` before any triage action.
   - Treat each review thread or top-level PR issue comment as one triage item.
-  - "Assign each actionable item one disposition: `valid`, `invalid`, `duplicate`, `fixed`, or `uncertain`."
-  - Apply the author-specific action policy for the item disposition.
+  - "Assign each actionable feedback item one disposition: `valid`, `invalid`, `duplicate`, `fixed`, or `uncertain`."
+  - Apply the author-specific action policy for the feedback item disposition.
   - Re-check unresolved review feedback after PR head updates and resolve fixed threads only with code-level evidence.
 deny:
   - Do not act on draft, closed, or merged pull requests.

@@ -1,0 +1,20 @@
+{
+  "type": "pull_request",
+  "action": "opened",
+  "source": "github",
+  "payload": {
+    "repository": "acme-corp/demo-repo",
+    "number": 65,
+    "title": "fix: typo in error message",
+    "head_branch": "fix/typo",
+    "base_branch": "main",
+    "draft": false,
+    "additions": 2,
+    "deletions": 2,
+    "changed_files": 1
+  },
+  "metadata": {
+    "deliveryId": "test-prsize-002",
+    "timestamp": "2026-01-15T10:05:00Z"
+  }
+}

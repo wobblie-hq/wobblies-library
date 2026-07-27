@@ -1,0 +1,11 @@
+{
+  "actions": [
+    {
+      "type": "create_pr",
+      "targetPattern": "^acme-corp/demo-repo$",
+      "contentMustMatch": ["unused", "dependency"]
+    }
+  ],
+  "maxActions": 1,
+  "allowNoop": false
+}

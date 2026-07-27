@@ -4,7 +4,8 @@ purpose: Keep open non-draft pull request titles and bodies accurate, reviewable
 integrations:
   - github
 watch:
-  - A GitHub pull request is opened, edited, reopened, or synchronized while open and non-draft.
+  - when a pull request is opened
+  - when a pull request is synchronized
 routines:
   - Determine relevant issue IDs from linked issue metadata first, then branch name, title, and body.
   - Repair the PR title issue suffix when the primary issue is clear.

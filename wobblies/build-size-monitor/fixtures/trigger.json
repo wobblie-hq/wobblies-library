@@ -1,0 +1,18 @@
+{
+  "type": "pull_request",
+  "action": "opened",
+  "source": "github",
+  "payload": {
+    "repository": "acme-corp/demo-repo",
+    "number": 48,
+    "title": "feat: add charting library",
+    "head_branch": "feat/charts",
+    "base_branch": "main",
+    "draft": false,
+    "diff_files": ["package.json", "pnpm-lock.yaml", "src/charts/index.ts"]
+  },
+  "metadata": {
+    "deliveryId": "test-size-001",
+    "timestamp": "2026-01-15T10:00:00Z"
+  }
+}

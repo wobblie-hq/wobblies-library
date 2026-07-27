@@ -1,6 +1,6 @@
 # Examples catalog consumer guide
 
-This guide is for product surfaces, docs sites, installers, and internal tools that consume the generated `examples.json` catalog from `universe-backwards/wobblies-library`.
+This guide is for product surfaces, docs sites, installers, and internal tools that consume the generated `examples.json` catalog from `wobblies-hq/wobblies-library`.
 
 Use [Examples v2 package and catalog spec](./examples-spec.md) as the normative schema contract. Use [Examples authoring guide](./examples-authoring-guide.md) for how examples are authored and reviewed. The public wobblie docs remain the source of truth for what `WOBBLIE.md` means at runtime.
 
@@ -79,7 +79,7 @@ Root shape:
 {
   "schemaVersion": 2,
   "source": {
-    "repository": "universe-backwards/wobblies-library",
+    "repository": "wobblies-hq/wobblies-library",
     "baseDirectory": "wobblies"
   },
   "examples": []
@@ -120,7 +120,7 @@ Example install metadata:
 
 ```json
 {
-  "catalogRepository": "universe-backwards/wobblies-library",
+  "catalogRepository": "wobblies-hq/wobblies-library",
   "catalogRef": "<catalog-commit-sha>",
   "catalogSchemaVersion": 2,
   "exampleId": "js-ts-dependency-upgrades"
@@ -205,7 +205,7 @@ installed:   .wobblies/github-activity-digest/references/digest-template.md
 TypeScript-shaped pseudocode:
 
 ```ts
-const catalog = await fetchJson("universe-backwards/wobblies-library", ref, "examples.json");
+const catalog = await fetchJson("wobblies-hq/wobblies-library", ref, "examples.json");
 
 if (catalog.schemaVersion !== 2) {
   throw new Error(`Unsupported examples catalog schema: ${catalog.schemaVersion}`);
@@ -231,7 +231,7 @@ for (const supportPath of [...entry.scripts, ...entry.references]) {
     sourcePath,
     destinationPath: `.wobblies/${entry.id}/${supportPath}`,
     mode: supportPath.startsWith("scripts/") ? "100755" : "100644",
-    content: await fetchText("universe-backwards/wobblies-library", ref, sourcePath),
+    content: await fetchText("wobblies-hq/wobblies-library", ref, sourcePath),
   });
 }
 

@@ -1,0 +1,19 @@
+{
+  "type": "pull_request",
+  "action": "opened",
+  "source": "github",
+  "payload": {
+    "repository": "acme-corp/demo-repo",
+    "number": 71,
+    "title": "refactor: extract billing helpers",
+    "head_branch": "refactor/billing-helpers",
+    "base_branch": "main",
+    "draft": false,
+    "diff_files": ["src/billing/helpers.ts", "src/billing/helpers.test.ts"],
+    "test_command": "pnpm test"
+  },
+  "metadata": {
+    "deliveryId": "test-pr-test-runner-001",
+    "timestamp": "2026-01-15T10:00:00Z"
+  }
+}

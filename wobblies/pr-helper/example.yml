@@ -1,0 +1,25 @@
+id: pr-helper
+title: PR Helper
+status: draft
+summary: Suggests description improvements and flags reviewer traps so pull requests arrive reviewable.
+readiness: direct-copy
+showOnWebsite: true
+showInDashboard: true
+fit:
+  jobsToBeDone:
+    - review-with-confidence
+  bestFor:
+    - Teams where thin PR descriptions slow every review down.
+    - Onboarding-heavy teams that want consistent PR hygiene without nagging.
+  notFor:
+    - Solo projects where the author is the only reviewer.
+    - Teams enforcing PR templates strictly through required checks already.
+requirements:
+  requiredIntegrations:
+    - github
+  optionalIntegrations: []
+  other: []
+specializationIdeas:
+  - Align suggestions with the repository's PR template sections.
+  - Add a linked-issue check for teams that require issue references.
+  - Tune the trap list for monorepos (cross-package changes as a flagged seam).

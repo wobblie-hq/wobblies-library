@@ -1,0 +1,17 @@
+{
+  "type": "pull_request",
+  "action": "opened",
+  "source": "github",
+  "payload": {
+    "repository": "acme-corp/demo-repo",
+    "number": 47,
+    "title": "feat: add search",
+    "head_branch": "feat/add-search",
+    "base_branch": "main",
+    "draft": false
+  },
+  "metadata": {
+    "deliveryId": "test-branch-002",
+    "timestamp": "2026-01-15T10:05:00Z"
+  }
+}

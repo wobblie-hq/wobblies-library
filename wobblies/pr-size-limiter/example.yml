@@ -1,7 +1,7 @@
 id: pr-size-limiter
 title: "PR Size Limiter"
 status: ready
-summary: "Flags pull requests that exceed a configurable diff size threshold and suggests splitting strategies."
+summary: "Comments on pull requests that exceed configurable file count or line count thresholds and suggests splitting strategies."
 readiness: direct-copy
 showOnWebsite: true
 showInDashboard: true
@@ -9,11 +9,37 @@ fit:
   jobsToBeDone:
     - maintain-and-modernize
   bestFor:
-    - Teams that want automated enforcement of this pattern.
+    - Teams that want to keep pull requests small and reviewable.
+    - Repositories where large PRs frequently cause review delays or merge conflicts.
   notFor:
-    - Teams that prefer manual review only.
+    - Teams that regularly ship large migrations or generated code changes.
+    - Repositories where PR size is not a concern.
 requirements:
   requiredIntegrations:
     - github
   optionalIntegrations: []
   other: []
+adaptations:
+  - key: max_files
+    label: Maximum changed files
+    description: Maximum number of changed files (excluding generated files) before the PR is flagged as too large.
+    required: false
+    default: "30"
+  - key: max_lines
+    label: Maximum changed lines
+    description: Maximum number of added plus deleted lines (excluding generated files) before the PR is flagged as too large.
+    required: false
+    default: "800"
+  - key: generated_globs
+    label: Generated file globs
+    description: Comma-separated glob patterns for files to exclude from size counts (lockfiles, generated code).
+    required: false
+    default: "**/package-lock.json,**/yarn.lock,**/pnpm-lock.yaml,**/*.generated.*"
+  - key: size_label
+    label: Size label
+    description: Optional label to apply when the PR exceeds thresholds. Leave empty to skip labeling.
+    required: false
+    default: ""
+specializationIdeas:
+  - Adjust thresholds based on your team's review capacity.
+  - Add generated file patterns for your specific code generators.
